@@ -1,10 +1,6 @@
-.include "get_index_from_nr_x_y.s"
-
 # saves in the matrix81
 # updates the currentPlayer
 # updates the currentSmallMatrix
-
-# TODO if index wrong tell
 get_input:                      # By Teo
     # prologue
     push %rbp
@@ -31,6 +27,7 @@ get_input:                      # By Teo
     movl currentInput, %r12d
     movl %r12d, currentSmallMatrix
 
+
     # if (matrix9[currentSmallMatrix] != '-') currentSmallMatrix = 9
     movb matrix9(%r12), %r13b
     cmpb $'-', %r13b
@@ -45,32 +42,55 @@ get_input:                      # By Teo
     jne get_simple_input
 
     # get complex input
-    # ask user for the 2 nr
-    mov $outputYouCanChose, %rdi
+    get_complex_input:
+        # ask user for the 2 nr
+        mov $outputYouCanChose, %rdi
+        xor %rax, %rax
+        call printf
+
+        # read 2 nr
+        subq $16, %rsp          # make room for 1st, 2nd nr
+        lea -8(%rbp), %rsi      # address of 1st nr
+        lea -16(%rbp), %rdx     # address of 2nd nr
+        mov $input2Nr, %rdi     # format string
+        mov $0, %rax            # clear rax
+        call scanf              # read 1st nr
+        mov -8(%rbp), %r12      # save 1st nr in %r12
+        dec %r12                # [1, 3] -> [0, 2]
+        mov -16(%rbp), %r13     # save 2nd nr in %r13
+        dec %r13                # [1, 3] -> [0, 2]
+        addq $16, %rsp          # restore stack
+
+        # update the currentSmallMatrix = %r13 + %r12 * 3
+        movl %r13d, currentSmallMatrix
+        addl %r12d, currentSmallMatrix
+        addl %r12d, currentSmallMatrix
+        addl %r12d, currentSmallMatrix
+
+    # if (matrix9[currentSmallMatrix] != '-') ask again
+    # TODO add blinking
+    # calculate index: r12 * 3 + r13
+    mov %r12, %r14
+    add %r12, %r14
+    add %r12, %r14
+    add %r13, %r14
+
+    cmpb $'-', matrix9(%r14)
+    je get_simple_input
+    # print Table already occupied, please chose another one!
+    mov $outputTableOccupied, %rdi
     xor %rax, %rax
     call printf
+    jmp get_complex_input
 
-    # read 2 nr
-    subq $16, %rsp          # make room for 1st, 2nd nr
-    lea -8(%rbp), %rsi      # address of 1st nr
-    lea -16(%rbp), %rdx     # address of 2nd nr
-    mov $input2Nr, %rdi     # format string
-    mov $0, %rax            # clear rax
-    call scanf              # read 1st nr
-    mov -8(%rbp), %r12      # save 1st nr in %r12
-    dec %r12                # [1, 3] -> [0, 2]
-    mov -16(%rbp), %r13     # save 2nd nr in %r13
-    dec %r13                # [1, 3] -> [0, 2]
-    addq $16, %rsp          # restore stack
+    get_simple_input:  
+        # print the current player
+        mov $outputCurrentPlayerSqare, %rdi
+        movb currentPlayer, %sil
+        movl currentSmallMatrix, %edx
+        xor %rax, %rax
+        call printf
 
-    # update the currentSmallMatrix = %r13 + %r12 * 3
-    movl %r13d, currentSmallMatrix
-    addl %r12d, currentSmallMatrix
-    addl %r12d, currentSmallMatrix
-    addl %r12d, currentSmallMatrix
-
-
-    get_simple_input:           
         # ask user for 2 nr
         mov $outputEnterColRow, %rdi
         movb currentPlayer, %sil
@@ -89,6 +109,7 @@ get_input:                      # By Teo
         mov -16(%rbp), %r13     # save 2nd nr in %r13
         dec %r13                # [1, 3] -> [0, 2]
 
+
     # get the index of the matrix81 by calling get_index_from_nr_x_y
     movl currentSmallMatrix, %edi   # nr
     mov %r12, %rsi                  # x
@@ -96,7 +117,18 @@ get_input:                      # By Teo
 
     call get_index_from_nr_x_y      # index is in %rax
     movl %eax, index81
+    
+    # if (matrix81[nr][x][y] != '-') ask again
+    # TODO add blinking
+    cmpb $'-', matrix81(%rax)
+    je update_get_input
+    # print Sqare already occupied, please chose another one
+    mov $outputSqareOccupied, %rdi
+    xor %rax, %rax
+    call printf
+    jmp get_simple_input
 
+    update_get_input:
     # update matrix81(%rax) to %r14
     movb currentPlayer, %r14b           # move char to %r14
     movb %r14b, matrix81(%rax)          

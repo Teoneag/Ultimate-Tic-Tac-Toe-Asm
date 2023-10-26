@@ -1,5 +1,5 @@
 # input: 0 - 8  what matrix to look at    0 - 8 what square to look at
-# output: the index (rax)
+# output: the small index (rax)
 getVal:         # By Gali
     # prologue
     push %rbp

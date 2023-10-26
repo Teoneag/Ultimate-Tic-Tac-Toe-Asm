@@ -43,20 +43,30 @@ The table will be displayed at all time, bellow who’s player’s turn it is, a
 The game will wait for user input, when typed it will check whether somebody won.
 
 ## Done
-- Gali
-    * big string = output
-    * small index -> big index
 - Teon
-    * matrix81
-        - display matrix81
-    * modify matrix81 by input
-        - nr, x, y -> index
+    * display_data
+    * get_index_from_nr_x_y
+    * get_input
+    * init_game
+    * check_win
+    * main.s
+- Gali
+    * addSmthToBigString
+    * smallIndexToBIgIndex
+    * get_val
+    * clear
+    * winScreen
 
 ## TODO
-1. i don't use the matrix9, but the code runs with matrix9: .skip 9, but i get seg fault with matrix9: .fill 9, 1, '-'
-2. Gali: from big index, modify big string
-3. Teon: updateInput, input complex (2 pairs)
-- interface (high scores, welcome)
-- win function
-- function to put in x small index -> modifies big string
-- function to draw big X/O (index) -> modifies big string
+- check win pe matrix9
+- winscreen
+- high score
+- restart game/exit
+- welcome
+- Ester eggs
+    * there is a hidden table where you can win
+    
+
+## Learned
+- .fill 81 1 '-' can get seg fault?
+- to write conventions before starting

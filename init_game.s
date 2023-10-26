@@ -1,18 +1,3 @@
-// .global main
-// main:
-//     # prologue
-//     push %rbp
-//     mov %rsp, %rbp
-
-//     call init_game
-
-//     #epilogue
-//     mov %rbp, %rsp
-//     pop %rbp
-// end:
-//     mov $0, %rdi
-//     call exit
-    
 # Initializes the
     # matrix81 and the matrix9 with '-'
     # currentPlayer with 'X' 
@@ -51,7 +36,7 @@ init_game:                      # By Teo
     movb $'O', currentPlayer
 
     # initialize currentInput (The init makes the currentSmallMatrix 4)
-    movl $4, currentInput
+    movl $9, currentInput
 
     # initialize bigMessage with defaultBigMessage
     mov $defaultBigMessage, %r12
