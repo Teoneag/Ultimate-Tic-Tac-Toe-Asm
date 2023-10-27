@@ -44,6 +44,8 @@ init_game:                      # By Teo
     # initialize nrWinsO with 0
     movl $0, nrWinsX
 
+    # move text bellow
+
     # initialize nrWinsX with 0
     movl $0, nrWinsO
 

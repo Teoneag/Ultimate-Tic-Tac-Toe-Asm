@@ -6,12 +6,14 @@ printBig:      # By gali ofc
 
     # push registers
     push %rbx
+    push %rbx
     push %r12
     push %r13
     push %r14
     push %r15
 
     movl currentSmallMatrix, %edi
+    push %rdi  # push the matrix to blink on the stack
     push %rdi  # push the matrix to blink on the stack
 
     cmp $9,%rdi
@@ -98,9 +100,11 @@ printBig:      # By gali ofc
     call printf
 
     # pop registers
+    pop %r15
     pop %r14
     pop %r13
     pop %r12
+    pop %rbx
     pop %rbx
 
     #epilogue

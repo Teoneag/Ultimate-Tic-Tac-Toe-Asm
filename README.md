@@ -50,19 +50,20 @@ The game will wait for user input, when typed it will check whether somebody won
     * init_game
     * check_win
     * main.s
+    * win_screen
 - Gali
     * addSmthToBigString
     * smallIndexToBIgIndex
     * get_val
     * clear
-    * winScreen
+    * welcomeScreen
 
 ## TODO
+- inputu gresit sa nu faca nmc
 - Teon
     * clipit
     * win
 - Gali
-    * high score
     * restart game/exit
 
 - Ester eggs

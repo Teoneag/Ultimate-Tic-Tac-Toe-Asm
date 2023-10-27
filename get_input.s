@@ -55,10 +55,10 @@ get_input:                      # By Teo
         mov $input2Nr, %rdi     # format string
         mov $0, %rax            # clear rax
         call scanf              # read 1st nr
-        mov -8(%rbp), %r13      # save 1st nr in %r12
-        dec %r13                # [1, 3] -> [0, 2]
-        mov -16(%rbp), %r12     # save 2nd nr in %r13
+        mov -8(%rbp), %r12      # save 1st nr in %r12 (row)
         dec %r12                # [1, 3] -> [0, 2]
+        mov -16(%rbp), %r13     # save 2nd nr in %r13 (col)
+        dec %r13                # [1, 3] -> [0, 2]
         addq $16, %rsp          # restore stack
 
         # update the currentSmallMatrix = %r13 + %r12 * 3
@@ -68,12 +68,11 @@ get_input:                      # By Teo
         addl %r12d, currentSmallMatrix
 
     # if (matrix9[currentSmallMatrix] != '-') ask again
-    # TODO add blinking
     # calculate index: r12 * 3 + r13
     mov %r13, %r14
     add %r12, %r14
     add %r12, %r14
-    add %r13, %r14
+    add %r12, %r14
 
     cmpb $'-', matrix9(%r14)
     je get_simple_input
@@ -85,14 +84,16 @@ get_input:                      # By Teo
 
     get_simple_input:
         call clear
-        call printBig
 
         # print the current player
         mov $outputCurrentPlayerSqare, %rdi
         movb currentPlayer, %sil
         movl currentSmallMatrix, %edx
+        incl %edx
         xor %rax, %rax
         call printf
+
+        call printBig
 
         # ask user for 2 nr
         mov $outputEnterCoord, %rdi
@@ -107,22 +108,20 @@ get_input:                      # By Teo
         mov $input2Nr, %rdi     # format string
         xor %rax, %rax          # clear rax
         call scanf              # read 1st nr
-        mov -8(%rbp), %r13      # save 1st nr in %r12
-        dec %r13                # [1, 3] -> [0, 2]
-        mov -16(%rbp), %r12     # save 2nd nr in %r13
+        mov -8(%rbp), %r12      # save 1st nr in %r12 (row)
         dec %r12                # [1, 3] -> [0, 2]
+        mov -16(%rbp), %r13     # save 2nd nr in %r13 (col)
+        dec %r13                # [1, 3] -> [0, 2]
 
 
-    # get the index of the matrix81 by calling get_index_from_nr_x_y
+    # get the index of the matrix81
     movl currentSmallMatrix, %edi   # nr
-    mov %r12, %rsi                  # x
-    mov %r13, %rdx                  # y
-
+    mov %r12, %rsi                  # col
+    mov %r13, %rdx                  # row
     call get_index_from_nr_x_y      # index is in %rax
     movl %eax, index81
     
     # if (matrix81[nr][x][y] != '-') ask again
-    # TODO add blinking
     cmpb $'-', matrix81(%rax)
     je update_get_input
     # print Sqare already occupied, please chose another one

@@ -25,12 +25,13 @@ add_win:      # By Teo
 
     cmpb $'O', %dil
     je print_O_add_win
-    cmpb $'D', %dil
-    jne print_X_add_win
+    cmpb $'X', %dil
+    je print_X_add_win
     jmp print_D_add_win
 
     # if %rdi == 'O'
     print_O_add_win:
+
     # O O O
     # O   O
     # O O O
@@ -124,7 +125,7 @@ add_win:      # By Teo
     mov %rax, %rsi
     call print_char_at_small_index
 
-
+    jmp end_add_win
 
     # if %rdi == 'X'
     print_X_add_win:

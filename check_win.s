@@ -13,6 +13,9 @@ check_win:                      # By Teo
     push %r14
     push %r15
 
+    push %rdi
+    push %rdi
+
     # if (rdi == 9) coppy matrix9 to registers
     cmp $9, %rdi
     jne copy_values_check_win
@@ -44,11 +47,13 @@ check_win:                      # By Teo
         mov $0, %rsi
         call getVal
         movb matrix81(%rax), %r10b
+        push %r10                   # save r10
 
         mov %r9, %rdi
         mov $1, %rsi
         call getVal
         movb matrix81(%rax), %r11b
+        push %r11                   # save r11
 
         mov %r9, %rdi
         mov $2, %rsi
@@ -74,6 +79,7 @@ check_win:                      # By Teo
         mov $6, %rsi
         call getVal
         movb matrix81(%rax), %al
+        push %rax               # save rax
 
         mov %r9, %rdi
         mov $7, %rsi
@@ -84,77 +90,82 @@ check_win:                      # By Teo
         mov $8, %rsi
         call getVal
         movb matrix81(%rax), %cl
+        push %rcx               # save rcx
+        // pop
+        pop %rcx
+        pop %rax
+        pop %r11
+        pop %r10
     end_copy_values_check_win:
 
 
-
     case_0_check_win:   # 0 1 2
+        mov %r10b, %r8b
         cmpb $'-', %r10b
         je case_1_check_win
-        mov %r10b, %r8b
         cmp %r10b, %r11b
         jne case_1_check_win
         cmp %r10b, %r12b
         je win_check_win
 
     case_1_check_win:   # 3 4 5
+        mov %r13b, %r8b
         cmpb $'-', %r13b
         je case_2_check_win
-        mov %r13b, %r8b
         cmp %r13b, %r14b
         jne case_2_check_win
         cmp %r13b, %r15b
         je win_check_win
 
     case_2_check_win:   # 6 7 8
+        mov %al, %r8b
         cmpb $'-', %al
         je case_3_check_win
-        mov %al, %r8b
         cmp %al, %bl
         jne case_3_check_win
         cmp %al, %cl
         je win_check_win
 
     case_3_check_win:    # 0 3 6
+        mov %r10b, %r8b
         cmpb $'-', %r10b
         je case_4_check_win
-        mov %r10b, %r8b
         cmp %r10b, %r13b
         jne case_4_check_win
         cmp %r10b, %al
         je win_check_win
 
     case_4_check_win:    # 1 4 7
+        mov %r11b, %r8b
         cmpb $'-', %r11b
         je case_5_check_win
-        mov %r11b, %r8b
         cmp %r11b, %r14b
         jne case_5_check_win
         cmp %r11b, %bl
         je win_check_win
 
     case_5_check_win:    # 2 5 8
+        mov %r12b, %r8b
         cmpb $'-', %r12b
         je case_6_check_win
-        mov %r12b, %r8b
         cmp %r12b, %r15b
         jne case_6_check_win
         cmp %r12b, %cl
         je win_check_win
 
     case_6_check_win:    # 0 4 8
+        mov %r10b, %r8b
         cmpb $'-', %r10b
         je case_7_check_win
-        mov %r10b, %r8b
         cmp %r10b, %r14b
         jne case_7_check_win
         cmp %r10b, %cl
         je win_check_win
 
     case_7_check_win:    # 2 4 6
+        mov %r12b, %r8b
         cmpb $'-', %r12b
         je case_8_check_win
-        mov %r12b, %r8b
         cmp %r12b, %r14b
         jne case_8_check_win
         cmp %r12b, %al
@@ -185,15 +196,15 @@ check_win:                      # By Teo
     
     
     win_check_win:
-        movb %r8b, %al
+        movb %r8b, %r12b
         jmp epilogue_check_win
 
     draw_check_win:
-        movb $'D', %al
+        movb $'D', %r12b
         jmp epilogue_check_win
 
     no_win_check_win:
-        movb $'-', %al
+        movb $'-', %r12b
         jmp end_check_win
 
 
@@ -202,37 +213,39 @@ check_win:                      # By Teo
 
     cmp $9, %rdi
     jne modify_matrix9_check_win
-    # if (rdi == 9) printf ai bucile faine + rax
-    mov $outputWonResult, %rdi
-    mov %rax, %rsi
-    xor %rax, %rax
-    call printf
+    # if (rdi == 9) return 'X' or 'O or 'D' to %rax
+    mov %r12b, %al
     jmp end_check_win
 
-    # else mattrix9(rdi) = rax
+    # else mattrix9(rdi) = rar12b
     modify_matrix9_check_win:
+    mov (%rsp),%rdi
+    movb %r12b, matrix9(%rdi)     # matrix9(rdi) = rax
+
     # check win for matrix9
     mov $9, %rdi
     call check_win
-    # if (rax == 'X' || rax == 'O') call winScreen
+    # if (al == 'X' || al == 'O') call win_screen
     cmpb $'X', %al
     je win_screen_check_win
     cmpb $'O', %al
     je win_screen_check_win
     jmp end_win_screen_check_win
     win_screen_check_win:
-    call winScreen
+    mov %rax, %rdi
+    call win_screen
+    jmp end_check_win
     end_win_screen_check_win:
 
-    movb %al, matrix9(%rdi)     # matrix9(rdi) = rax
-
     # colour the values in matrix81
-    mov %rdi, %rsi
-    movb %al, %dil
+    movb %r12b, %dil        # rdi = character that won
+    movb (%rsp), %sil       # rsi = 0 - 8 unde dai add win  
     call add_win
-
+    
     end_check_win:
     # pop registers
+    pop %rdi
+    pop %rdi
     pop %r15
     pop %r14
     pop %r13

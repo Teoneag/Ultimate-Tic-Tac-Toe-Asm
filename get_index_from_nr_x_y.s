@@ -1,5 +1,5 @@
-# Returns the index in the matrix81 from the nr of small matrix, x_small and y_small
-# Input: %rdi = nr [0, 8], %rsi = x_small [0, 2], %rdx y_small [0, 2]
+# Returns the index in the matrix81 from the nr of small matrix, row and col
+# Input: %rdi = nr [0, 8], %rsi = row [0, 2], %rdx col [0, 2]
 # Output: index [0, 80]
 //  0  1  2 |  3  4  5 |  6  7  8
 //  9 10 11 | 12 13 14 | 15 16 17
@@ -32,39 +32,36 @@ get_index_from_nr_x_y:        # By Teo
     push %rbp
     mov %rsp, %rbp
     
-    mov %rsi, %r10       # r10 = x_small
-    mov %rdx, %r11       # r11 = y_small
+	# push registers
+	push %rbx
+	push %rbx
+	push %r12
+	push %r13
+	push %r14
+	push %r15
 
-    // %RAX = %RDX : %RAX  / SRC
-    // %RDX = %RDX : %RAX % SRC
-    # divide nr (rdi) by 3
-    mov %rdi, %rax
-    xor %rdx, %rdx
-    mov $3, %rcx
-    div %rcx
-    mov %rax, %r8        # r8 = x_big
-    mov %rdx, %r9        # r9 = y_big
+    # calculate value [0, 8] from row, col
+	mov %rdx, %r12
+	add %rsi, %r12
+	add %rsi, %r12
+	add %rsi, %r12
 
-    # %r10 += %r8 * 3
-    add %r8, %r10
-    add %r8, %r10
-    add %r8, %r10
 
-    # %r11 += %r9 * 3
-    add %r9, %r11
-    add %r9, %r11
-    add %r9, %r11
 
-    # %rax = %r11 * 9
-    mov %r11, %rax
-    mov $9, %rcx
-    xor %rdx, %rdx
-    mul %rcx
+	# call getVal
+	mov %r12, %rsi
+	call getVal
 
-    # %rax += %r10
-    add %r10, %rax
+	# pop registers
+	pop %r15
+	pop %r14
+	pop %r13
+	pop %r12
+	pop %rbx
+	pop %rbx
 
-  #epilogue
-    mov %rbp, %rsp
-    pop %rbp
-    ret
+	#epilogue
+	mov %rbp, %rsp
+	pop %rbp
+	ret
+  

@@ -12,22 +12,23 @@ welcomeScreen:      # By Gali ofc
     push %r14
     push %r15
 
-    mov $welcome,%rdi
+    call clear
+
+    mov $outputWelcome,%rdi
     call printf
 
     call scanf
 
     call clear
 
-    mov $highscores,%rdi
-    movl $nrWinsX,%esi
-    movl $nrWinsO,%edx
-
+    mov $outputHighscores,%rdi
+    movl nrWinsO,%esi
+    movl nrWinsX,%edx
     call printf
 
-    call scanf
-
     // call clear
+
+    call printBig
 
     # pop registers
     pop %r15
