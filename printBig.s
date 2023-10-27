@@ -1,4 +1,5 @@
-printBig:      # By gali ofc     input: nr 0 -8 in rdi, which square to blink
+// input: nr 0 -8 in rdi, which square to blink
+printBig:      # By gali ofc     
     # prologue
     push %rbp
     mov %rsp, %rbp
@@ -10,8 +11,31 @@ printBig:      # By gali ofc     input: nr 0 -8 in rdi, which square to blink
     push %r14
     push %r15
 
-    
+    movl currentSmallMatrix, %edi
     push %rdi  # push the matrix to blink on the stack
+
+    cmp $9,%rdi
+    jne doNormalStuff
+    mov $bigMessage,%r12
+    mov $0,%r13  # r13 is index
+    mov $start,%rdi
+    loopShit:
+    movb (%r12,%r13,1),%sil
+    cmpb $0,%sil
+    je end_loopy
+    mov $start,%rdi
+
+    call printf
+    inc %r13
+    jmp loopShit
+
+    doNormalStuff:
+
+
+
+
+
+    
 
     mov (%rsp),%rdi
     mov $0,%rsi
@@ -69,9 +93,11 @@ printBig:      # By gali ofc     input: nr 0 -8 in rdi, which square to blink
     jmp loopy
     
     end_loopy:
+    mov $stop,%rdi
+    mov $' ',%rsi
+    call printf
 
     # pop registers
-    pop %r15
     pop %r14
     pop %r13
     pop %r12

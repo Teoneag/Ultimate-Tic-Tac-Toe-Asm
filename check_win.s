@@ -199,11 +199,6 @@ check_win:                      # By Teo
 
 
     epilogue_check_win:
-        # print rax
-        // mov $outputCharAndNewLine, %rdi
-        // mov %rax, %rsi
-        // xor %rax, %rax
-        // call printf
 
     cmp $9, %rdi
     jne modify_matrix9_check_win
@@ -216,6 +211,19 @@ check_win:                      # By Teo
 
     # else mattrix9(rdi) = rax
     modify_matrix9_check_win:
+    # check win for matrix9
+    mov $9, %rdi
+    call check_win
+    # if (rax == 'X' || rax == 'O') call winScreen
+    cmpb $'X', %al
+    je win_screen_check_win
+    cmpb $'O', %al
+    je win_screen_check_win
+    jmp end_win_screen_check_win
+    win_screen_check_win:
+    call winScreen
+    end_win_screen_check_win:
+
     movb %al, matrix9(%rdi)     # matrix9(rdi) = rax
 
     # colour the values in matrix81

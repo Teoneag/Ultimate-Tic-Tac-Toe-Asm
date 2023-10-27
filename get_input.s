@@ -55,10 +55,10 @@ get_input:                      # By Teo
         mov $input2Nr, %rdi     # format string
         mov $0, %rax            # clear rax
         call scanf              # read 1st nr
-        mov -8(%rbp), %r12      # save 1st nr in %r12
-        dec %r12                # [1, 3] -> [0, 2]
-        mov -16(%rbp), %r13     # save 2nd nr in %r13
+        mov -8(%rbp), %r13      # save 1st nr in %r12
         dec %r13                # [1, 3] -> [0, 2]
+        mov -16(%rbp), %r12     # save 2nd nr in %r13
+        dec %r12                # [1, 3] -> [0, 2]
         addq $16, %rsp          # restore stack
 
         # update the currentSmallMatrix = %r13 + %r12 * 3
@@ -70,7 +70,7 @@ get_input:                      # By Teo
     # if (matrix9[currentSmallMatrix] != '-') ask again
     # TODO add blinking
     # calculate index: r12 * 3 + r13
-    mov %r12, %r14
+    mov %r13, %r14
     add %r12, %r14
     add %r12, %r14
     add %r13, %r14
@@ -83,7 +83,10 @@ get_input:                      # By Teo
     call printf
     jmp get_complex_input
 
-    get_simple_input:  
+    get_simple_input:
+        call clear
+        call printBig
+
         # print the current player
         mov $outputCurrentPlayerSqare, %rdi
         movb currentPlayer, %sil
@@ -92,7 +95,7 @@ get_input:                      # By Teo
         call printf
 
         # ask user for 2 nr
-        mov $outputEnterColRow, %rdi
+        mov $outputEnterCoord, %rdi
         movb currentPlayer, %sil
         xor %rax, %rax
         call printf
@@ -104,10 +107,10 @@ get_input:                      # By Teo
         mov $input2Nr, %rdi     # format string
         xor %rax, %rax          # clear rax
         call scanf              # read 1st nr
-        mov -8(%rbp), %r12      # save 1st nr in %r12
-        dec %r12                # [1, 3] -> [0, 2]
-        mov -16(%rbp), %r13     # save 2nd nr in %r13
+        mov -8(%rbp), %r13      # save 1st nr in %r12
         dec %r13                # [1, 3] -> [0, 2]
+        mov -16(%rbp), %r12     # save 2nd nr in %r13
+        dec %r12                # [1, 3] -> [0, 2]
 
 
     # get the index of the matrix81 by calling get_index_from_nr_x_y

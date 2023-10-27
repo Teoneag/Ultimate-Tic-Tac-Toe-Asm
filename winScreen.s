@@ -15,15 +15,15 @@ winScreen:   # input:  a chard in rdi   O - O won  X - X won   - - Draw
 
     cmp $'X',%r12
     jne checkO
-    movq $Xwon,%r13
+    movq $outputXWon,%r13
     jmp loop1
     checkO:
     cmp $'O',%r12
     jne draw
-    movq $Owon,%r13
+    movq $outputOWon,%r13
     jmp loop1
     draw:
-    movq $Draw,%r13
+    movq $outputDraw,%r13
     mov $0,%rbx
     loop1:
   

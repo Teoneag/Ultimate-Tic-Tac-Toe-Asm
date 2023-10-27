@@ -58,11 +58,13 @@ The game will wait for user input, when typed it will check whether somebody won
     * winScreen
 
 ## TODO
-- check win pe matrix9
-- winscreen
-- high score
-- restart game/exit
-- welcome
+- Teon
+    * clipit
+    * win
+- Gali
+    * high score
+    * restart game/exit
+
 - Ester eggs
     * there is a hidden table where you can win
     

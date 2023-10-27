@@ -38,6 +38,15 @@ init_game:                      # By Teo
     # initialize currentInput (The init makes the currentSmallMatrix 4)
     movl $9, currentInput
 
+    # initialize currentSmallMatrix with 9
+    movl $9, currentSmallMatrix
+
+    # initialize nrWinsO with 0
+    movl $0, nrWinsX
+
+    # initialize nrWinsX with 0
+    movl $0, nrWinsO
+
     # initialize bigMessage with defaultBigMessage
     mov $defaultBigMessage, %r12
     mov $0, %r13        # i = 0

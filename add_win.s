@@ -24,7 +24,10 @@ add_win:      # By Teo
 
 
     cmpb $'O', %dil
+    je print_O_add_win
+    cmpb $'D', %dil
     jne print_X_add_win
+    jmp print_D_add_win
 
     # if %rdi == 'O'
     print_O_add_win:
@@ -218,9 +221,103 @@ add_win:      # By Teo
     movb $'X', %dil
     mov %rax, %rsi
     call print_char_at_small_index
+    jmp end_add_win
+    
+    print_D_add_win:
+    # D D
+    # D   D
+    # D D
+    # 0
+    mov %r12, %rdi
+    mov $0, %rsi
+    call getVal
 
-    
-    
+    movb $'D', matrix81(%rax)
+    movb $'D', %dil
+    mov %rax, %rsi
+    call print_char_at_small_index
+
+    # 1
+    mov %r12, %rdi
+    mov $1, %rsi
+    call getVal
+
+    movb $'D', matrix81(%rax)
+    movb $'D', %dil
+    mov %rax, %rsi
+    call print_char_at_small_index
+
+    # 2
+    mov %r12, %rdi
+    mov $2, %rsi
+    call getVal
+
+    movb $'-', matrix81(%rax)
+    movb $' ', %dil
+    mov %rax, %rsi
+    call print_char_at_small_index
+
+    # 3
+    mov %r12, %rdi
+    mov $3, %rsi
+    call getVal
+
+    movb $'D', matrix81(%rax)
+    movb $'D', %dil
+    mov %rax, %rsi
+    call print_char_at_small_index
+
+    # 4
+    mov %r12, %rdi
+    mov $4, %rsi
+    call getVal
+
+    movb $'-', matrix81(%rax)
+    movb $' ', %dil
+    mov %rax, %rsi
+    call print_char_at_small_index
+
+    # 5
+    mov %r12, %rdi
+    mov $5, %rsi
+    call getVal
+
+    movb $'D', matrix81(%rax)
+    movb $'D', %dil
+    mov %rax, %rsi
+    call print_char_at_small_index
+
+    # 6
+    mov %r12, %rdi
+    mov $6, %rsi
+    call getVal
+
+    movb $'D', matrix81(%rax)
+    movb $'D', %dil
+    mov %rax, %rsi
+    call print_char_at_small_index
+
+    # 7
+    mov %r12, %rdi
+    mov $7, %rsi
+    call getVal
+
+    movb $'D', matrix81(%rax)
+    movb $'D', %dil
+    mov %rax, %rsi
+    call print_char_at_small_index
+
+    # 8
+    mov %r12, %rdi
+    mov $8, %rsi
+    call getVal
+
+    movb $'-', matrix81(%rax)
+    movb $' ', %dil
+    mov %rax, %rsi
+    call print_char_at_small_index
+
+    end_add_win:
 
 
 
