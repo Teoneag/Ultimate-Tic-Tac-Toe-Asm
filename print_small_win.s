@@ -1,7 +1,7 @@
 # Writes O or X in the smallMatrix
 # Input: char ('X'/'O'); nr [0, 8] of the smallMatrix
 # TODO: implement draw
-add_win:      # By Teo
+print_small_win:      # By Teo
     # prologue
     push %rbp
     mov %rsp, %rbp

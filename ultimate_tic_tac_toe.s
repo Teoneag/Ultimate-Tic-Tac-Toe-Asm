@@ -1,4 +1,4 @@
-.include "add_win.s"
+.include "print_small_win.s"
 .include "addSmthnToBigString.s"
 .include "check_win.s"
 .include "clear.s"
@@ -49,9 +49,10 @@ outputThisIsMatrix9: .asciz "This is the matrix9: \n"
 outputYouCanChose: .asciz "\nYou can chose the matrix. Please enter the desired row, col (1, 2 or 3) separated by 1 space, like this: 3 1 \n"
 outputEnterCoord: .asciz "\nPlease enter the row, col where you want to place your %c, separated by 1 space, like this: 3 1 \n"
 outputCurrentPlayerSqare: .asciz "Current player: %c\nPlaying on the square: %ld\n\n\n"
-outputSqareOccupied: .asciz "This square is already taken. Please chose another one!\n"
-outputTableOccupied: .asciz "This table is already taken. Please chose another one!\n"
+outputSqareOccupied: .asciz "This square is not available. Please chose another one!\n"
+outputTableOccupied: .asciz "This table is not availbale. Please chose another one!\n"
 outputWrongInputForWinScreen: .asciz "Wrong input ai cacat steagu (wrong input win screen)\n"
+outputDebug: .asciz "Alelulaia: %c\n"
 
 input2Nr: .asciz "%ld %ld"
 
@@ -83,7 +84,7 @@ main:
         movl currentSmallMatrix, %edi
         call check_win
         
-        // call display_data
+        call display_data
 
         jmp loop_main
     

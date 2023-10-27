@@ -73,3 +73,6 @@ The game will wait for user input, when typed it will check whether somebody won
 ## Learned
 - .fill 81 1 '-' can get seg fault?
 - to write conventions before starting
+
+## Special thanks
+Rares Popa - tester

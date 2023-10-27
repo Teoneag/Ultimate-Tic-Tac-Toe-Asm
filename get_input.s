@@ -61,11 +61,24 @@ get_input:                      # By Teo
         dec %r13                # [1, 3] -> [0, 2]
         addq $16, %rsp          # restore stack
 
+        # if %r12 < 0 || %r12 > 2 || %r13 < 0 || %r13 > 2 ask again
+        cmp $0, %r12
+        jl try_again_output
+        cmp $2, %r12
+        jg try_again_output
+        cmp $0, %r13
+        jl try_again_output
+        cmp $2, %r13
+        jg try_again_output
+
         # update the currentSmallMatrix = %r13 + %r12 * 3
         movl %r13d, currentSmallMatrix
         addl %r12d, currentSmallMatrix
         addl %r12d, currentSmallMatrix
         addl %r12d, currentSmallMatrix
+
+
+
 
     # if (matrix9[currentSmallMatrix] != '-') ask again
     # calculate index: r12 * 3 + r13
@@ -77,6 +90,7 @@ get_input:                      # By Teo
     cmpb $'-', matrix9(%r14)
     je get_simple_input
     # print Table already occupied, please chose another one!
+    try_again_output:
     mov $outputTableOccupied, %rdi
     xor %rax, %rax
     call printf
@@ -84,6 +98,7 @@ get_input:                      # By Teo
 
     get_simple_input:
         call clear
+    get_simple_input_without_clear:
 
         # print the current player
         mov $outputCurrentPlayerSqare, %rdi
@@ -121,14 +136,26 @@ get_input:                      # By Teo
     call get_index_from_nr_x_y      # index is in %rax
     movl %eax, index81
     
+    # if %r12 < 0 || %r12 > 2 || %r13 < 0 || %r13 > 2 ask again
+    cmp $0, %r12
+    jl try_again_output_2
+    cmp $2, %r12
+    jg try_again_output_2
+    cmp $0, %r13
+    jl try_again_output_2
+    cmp $2, %r13
+    jg try_again_output_2
+
     # if (matrix81[nr][x][y] != '-') ask again
     cmpb $'-', matrix81(%rax)
     je update_get_input
     # print Sqare already occupied, please chose another one
+    try_again_output_2:
+    call clear
     mov $outputSqareOccupied, %rdi
     xor %rax, %rax
     call printf
-    jmp get_simple_input
+    jmp get_simple_input_without_clear
 
     update_get_input:
     # update matrix81(%rax) to %r14

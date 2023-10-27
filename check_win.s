@@ -191,7 +191,7 @@ check_win:                      # By Teo
         cmp $'-', %cl
         je no_win_check_win
     
-    jmp draw_check_win
+        jmp draw_check_win
 
     
     
@@ -204,7 +204,7 @@ check_win:                      # By Teo
         jmp epilogue_check_win
 
     no_win_check_win:
-        movb $'-', %r12b
+        movb $'-', %al
         jmp end_check_win
 
 
@@ -226,6 +226,18 @@ check_win:                      # By Teo
     mov $9, %rdi
     call check_win
     # if (al == 'X' || al == 'O') call win_screen
+    # TODO add D case
+    push %rax
+    push %rax
+
+    # print rax
+    mov $outputDebug, %rdi
+    mov %rax, %rsi
+    xor %rax, %rax
+    call printf
+
+    pop %rax
+    pop %rax
     cmpb $'X', %al
     je win_screen_check_win
     cmpb $'O', %al
@@ -239,9 +251,9 @@ check_win:                      # By Teo
 
     # colour the values in matrix81
     movb %r12b, %dil        # rdi = character that won
-    movb (%rsp), %sil       # rsi = 0 - 8 unde dai add win  
-    call add_win
-    
+    movb (%rsp), %sil       # rsi = 0 - 8 unde dai print_small_win 
+    call print_small_win
+
     end_check_win:
     # pop registers
     pop %rdi
