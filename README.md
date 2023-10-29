@@ -59,20 +59,151 @@ The game will wait for user input, when typed it will check whether somebody won
     * welcomeScreen
 
 ## TODO
-- inputu gresit sa nu faca nmc
 - Teon
-    * clipit
-    * win
-- Gali
     * restart game/exit
+    * counter high score
+    * shower
+- Gali
+    * Art end screen
+    * get some bitches
+
+- add art
 
 - Ester eggs
     * there is a hidden table where you can win
-    
+
+
+## Bugs solved
+- Rares bug: the printBig function was trashing the value in %r12, so when having a specific input, the program would crash
 
 ## Learned
 - .fill 81 1 '-' can get seg fault?
 - to write conventions before starting
+- women don't like when you talk about programming
 
 ## Special thanks
 Rares Popa - tester
+
+## Win X
+2 2
+1 1
+2 2
+1 2
+2 2
+1 3
+2 1
+1 1
+2 1
+1 2
+2 1
+1 3
+2 3
+3 1
+2 3
+3 2
+2 3
+3 3
+
+# Win O
+1 1
+2 2
+3 3
+2 2
+3 2
+2 2
+3 1
+2 1
+1 1
+2 1
+1 2
+2 1
+1 3
+2 3
+3 1
+2 3
+3 2
+2 3
+3 3
+
+# Draw
+2 2
+2 2
+1 1
+2 2
+2 1
+2 2
+1 3
+2 2
+2 3
+2 2
+3 2
+1 1
+3 3
+3 3
+2 2
+1 2
+2 2
+3 1
+2 2
+3 3
+1 1
+1 1
+1 2
+3 3
+1 2
+1 1
+2 1
+1 1
+1 3
+1 1
+3 2
+2 2
+3 2
+3 3
+1 3
+3 3
+3 2
+1 3
+1 2
+2 1
+3 3
+1 3
+1 3
+1 1
+2 3
+1 3
+3 1
+1 1
+1 2
+1 3
+1 3
+3 1
+3 3
+3 1
+2 3
+3 1
+1 2
+2 3
+1 1
+2 3
+1 2
+2 3
+2 1
+3 2
+3 1
+3 2
+2 3
+2 3
+3 1
+2 1
+3 1
+2 3
+1 3
+1 3
+3 3
+2 1
+3 2
+3 3
+2 1
+1 3
+2 3

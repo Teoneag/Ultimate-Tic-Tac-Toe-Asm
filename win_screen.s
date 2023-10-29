@@ -13,40 +13,50 @@ win_screen:      # By Teo
     push %r14
     push %r15
 
-    // call clear
+    # save input in %r12
+    mov %rdi, %r12
 
-    // call printBig
+    call clear
 
-    cmpb $'X', %dil
-    je X_win_screen
+    movl $10, currentSmallMatrix
 
-    cmpb $'O', %dil
-    je O_win_screen
+    call printBig
 
-    cmpb $'D', %dil
-    je D_win_screen
-
-    # print error message
-    mov $outputWrongInputForWinScreen, %rdi
-    xor %rax, %rax
-    call printf
-
-    X_win_screen:
-    mov $outputXWon, %rdi
-    jmp end_win_screen
-
-    O_win_screen:
-    mov $outputOWon, %rdi
-    jmp end_win_screen
-
-    D_win_screen:
-    mov $outputDraw, %rdi
+    mov %r12, %rdi
+    call print_win
     
-    end_win_screen:
+    // call scanf              # wait for input
+    # TODO wait for user input to display next things
+
+    # ask the player if you want to play again
+    mov $outputAskPlayAgain, %rdi
     xor %rax, %rax
     call printf
 
-    jmp end_main
+    take_player_input_win_screen:
+    # take the player's input
+    mov $inputChar, %rdi
+    sub $16, %rsp
+    lea -8(%rbp), %rsi
+    xor %rax, %rax
+    call scanf
+
+    # if the player input is y play again
+    movb -8(%rbp), %dil
+    cmpb $'y', %dil
+    je initialize_game
+
+    # if the player input is n exit
+    movb -8(%rbp), %dil
+    cmpb $'n', %dil
+    je end_main
+
+    # if the player input is not y or n ask again
+    # TODO ask only once if the player input is invalid
+    // mov $outputInvalidInput, %rdi
+    // xor %rax, %rax
+    // call printf
+    jmp take_player_input_win_screen
 
     # pop registers
     pop %r15

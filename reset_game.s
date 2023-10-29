@@ -3,7 +3,7 @@
     # currentPlayer with 'X' 
     # currentSmallMatrix with 4
     # move defaultBigMessage in bigMessage
-init_game:                      # By Teo
+reset_game:                      # By Teo
     # prologue
     push %rbp
     mov %rsp, %rbp
@@ -40,14 +40,6 @@ init_game:                      # By Teo
 
     # initialize currentSmallMatrix with 9
     movl $9, currentSmallMatrix
-
-    # initialize nrWinsO with 0
-    movl $0, nrWinsX
-
-    # move text bellow
-
-    # initialize nrWinsX with 0
-    movl $0, nrWinsO
 
     # initialize bigMessage with defaultBigMessage
     mov $defaultBigMessage, %r12

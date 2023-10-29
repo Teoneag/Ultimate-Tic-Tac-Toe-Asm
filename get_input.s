@@ -43,6 +43,20 @@ get_input:                      # By Teo
 
     # get complex input
     get_complex_input:
+        call clear
+        mov $outputHighscores,%rdi
+        movl nrWinsX, %esi
+        movl nrWinsO, %edx
+        movl nrDraws, %ecx
+        call printf
+        
+        mov $outputCurrentPlayerSqare, %rdi
+        movb currentPlayer, %sil
+        movl currentSmallMatrix, %edx
+        incl %edx
+        xor %rax, %rax
+        call printf
+        call printBig
         # ask user for the 2 nr
         mov $outputYouCanChose, %rdi
         xor %rax, %rax
@@ -53,7 +67,7 @@ get_input:                      # By Teo
         lea -8(%rbp), %rsi      # address of 1st nr
         lea -16(%rbp), %rdx     # address of 2nd nr
         mov $input2Nr, %rdi     # format string
-        mov $0, %rax            # clear rax
+        xor %rax, %rax          # clear rax
         call scanf              # read 1st nr
         mov -8(%rbp), %r12      # save 1st nr in %r12 (row)
         dec %r12                # [1, 3] -> [0, 2]
@@ -99,7 +113,11 @@ get_input:                      # By Teo
     get_simple_input:
         call clear
     get_simple_input_without_clear:
-
+        mov $outputHighscores,%rdi
+        movl nrWinsX, %esi
+        movl nrWinsO, %edx
+        movl nrDraws, %ecx
+        call printf
         # print the current player
         mov $outputCurrentPlayerSqare, %rdi
         movb currentPlayer, %sil

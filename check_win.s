@@ -197,64 +197,58 @@ check_win:                      # By Teo
     
     win_check_win:
         movb %r8b, %r12b
-        jmp epilogue_check_win
+        jmp final_check_win
 
     draw_check_win:
         movb $'D', %r12b
-        jmp epilogue_check_win
+        jmp final_check_win
 
     no_win_check_win:
         movb $'-', %al
-        jmp end_check_win
+        jmp epilogue_check_win
 
 
 
-    epilogue_check_win:
+    final_check_win:
 
     cmp $9, %rdi
     jne modify_matrix9_check_win
     # if (rdi == 9) return 'X' or 'O or 'D' to %rax
     mov %r12b, %al
-    jmp end_check_win
+    jmp epilogue_check_win
 
     # else mattrix9(rdi) = rar12b
     modify_matrix9_check_win:
-    mov (%rsp),%rdi
+    mov (%rsp), %rdi
     movb %r12b, matrix9(%rdi)     # matrix9(rdi) = rax
-
-    # check win for matrix9
-    mov $9, %rdi
-    call check_win
-    # if (al == 'X' || al == 'O') call win_screen
-    # TODO add D case
-    push %rax
-    push %rax
-
-    # print rax
-    mov $outputDebug, %rdi
-    mov %rax, %rsi
-    xor %rax, %rax
-    call printf
-
-    pop %rax
-    pop %rax
-    cmpb $'X', %al
-    je win_screen_check_win
-    cmpb $'O', %al
-    je win_screen_check_win
-    jmp end_win_screen_check_win
-    win_screen_check_win:
-    mov %rax, %rdi
-    call win_screen
-    jmp end_check_win
-    end_win_screen_check_win:
 
     # colour the values in matrix81
     movb %r12b, %dil        # rdi = character that won
     movb (%rsp), %sil       # rsi = 0 - 8 unde dai print_small_win 
     call print_small_win
 
-    end_check_win:
+    # check win for matrix9
+    mov $9, %rdi
+    call check_win
+    mov %rax, %r13
+
+
+    # if (al == 'X' || al == 'O') call win_screen
+    mov %r13, %rax
+    cmpb $'X', %al
+    je win_screen_check_win
+    cmpb $'O', %al
+    je win_screen_check_win
+    cmpb $'D', %al
+    je win_screen_check_win
+    jmp end_win_screen_check_win
+    win_screen_check_win:
+    mov %rax, %rdi
+    call win_screen
+    jmp epilogue_check_win
+    end_win_screen_check_win:
+
+    epilogue_check_win:
     # pop registers
     pop %rdi
     pop %rdi

@@ -22,11 +22,10 @@ welcomeScreen:      # By Gali ofc
     call clear
 
     mov $outputHighscores,%rdi
-    movl nrWinsO,%esi
-    movl nrWinsX,%edx
+    movl nrWinsX, %esi
+    movl nrWinsO, %edx
+    movl nrDraws, %ecx
     call printf
-
-    // call clear
 
     call printBig
 
