@@ -16,12 +16,12 @@ print_char_at_small_index:      # By Teon     coaie ai implementat codu meu + 4 
     movb %dil, %r12b
     
     mov %rsi, %rdi
-    call smallIndexToBigIndex
+    call small_to_big_index
 
     movb %r12b, %dil
     mov %rax, %rsi
     mov $bigMessage, %rdx
-    call addSmthnToBigString 
+    call add_smthn_to_big_string 
 
     # pop registers
     pop %r15

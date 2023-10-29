@@ -20,7 +20,7 @@ win_screen:      # By Teo
 
     movl $10, currentSmallMatrix
 
-    call printBig
+    call print_big
 
     mov %r12, %rdi
     call print_win
@@ -29,13 +29,13 @@ win_screen:      # By Teo
     # TODO wait for user input to display next things
 
     # ask the player if you want to play again
-    mov $outputAskPlayAgain, %rdi
+    mov $MessageAskPlayAgain, %rdi
     xor %rax, %rax
     call printf
 
     take_player_input_win_screen:
     # take the player's input
-    mov $inputChar, %rdi
+    mov $InputChar, %rdi
     sub $16, %rsp
     lea -8(%rbp), %rsi
     xor %rax, %rax

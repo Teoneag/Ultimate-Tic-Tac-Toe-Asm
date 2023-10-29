@@ -38,7 +38,7 @@ print_small_win:      # By Teo
     # 0
     mov %r12, %rdi
     mov $0, %rsi
-    call getVal
+    call get_val
     
     movb $'O', matrix81(%rax)
     movb $'O', %dil
@@ -48,7 +48,7 @@ print_small_win:      # By Teo
     # 1
     mov %r12, %rdi
     mov $1, %rsi
-    call getVal
+    call get_val
 
     movb $'O', matrix81(%rax)
     movb $'O', %dil
@@ -58,7 +58,7 @@ print_small_win:      # By Teo
     # 2
     mov %r12, %rdi
     mov $2, %rsi
-    call getVal
+    call get_val
 
     movb $'O', matrix81(%rax)
     movb $'O', %dil
@@ -68,7 +68,7 @@ print_small_win:      # By Teo
     # 3
     mov %r12, %rdi
     mov $3, %rsi
-    call getVal
+    call get_val
 
     movb $'O', matrix81(%rax)
     movb $'O', %dil
@@ -78,7 +78,7 @@ print_small_win:      # By Teo
     # 4
     mov %r12, %rdi
     mov $4, %rsi
-    call getVal
+    call get_val
 
     movb $'-', matrix81(%rax)
     movb $' ', %dil
@@ -88,7 +88,7 @@ print_small_win:      # By Teo
     # 5
     mov %r12, %rdi
     mov $5, %rsi
-    call getVal
+    call get_val
 
     movb $'O', matrix81(%rax)
     movb $'O', %dil
@@ -98,7 +98,7 @@ print_small_win:      # By Teo
     # 6
     mov %r12, %rdi
     mov $6, %rsi
-    call getVal
+    call get_val
 
     movb $'O', matrix81(%rax)
     movb $'O', %dil
@@ -108,7 +108,7 @@ print_small_win:      # By Teo
     # 7
     mov %r12, %rdi
     mov $7, %rsi
-    call getVal
+    call get_val
 
     movb $'O', matrix81(%rax)
     movb $'O', %dil
@@ -118,7 +118,7 @@ print_small_win:      # By Teo
     # 8
     mov %r12, %rdi
     mov $8, %rsi
-    call getVal
+    call get_val
 
     movb $'O', matrix81(%rax)
     movb $'O', %dil
@@ -136,7 +136,7 @@ print_small_win:      # By Teo
     # 0
     mov %r12, %rdi
     mov $0, %rsi
-    call getVal
+    call get_val
 
     movb $'X', matrix81(%rax)
     movb $'X', %dil
@@ -146,7 +146,7 @@ print_small_win:      # By Teo
     # 1
     mov %r12, %rdi
     mov $1, %rsi
-    call getVal
+    call get_val
 
     movb $'-', matrix81(%rax)
     movb $' ', %dil
@@ -156,7 +156,7 @@ print_small_win:      # By Teo
     # 2
     mov %r12, %rdi
     mov $2, %rsi
-    call getVal
+    call get_val
 
     movb $'X', matrix81(%rax)
     movb $'X', %dil
@@ -166,7 +166,7 @@ print_small_win:      # By Teo
     # 3
     mov %r12, %rdi
     mov $3, %rsi
-    call getVal
+    call get_val
 
     movb $'-', matrix81(%rax)
     movb $' ', %dil
@@ -176,7 +176,7 @@ print_small_win:      # By Teo
     # 4
     mov %r12, %rdi
     mov $4, %rsi
-    call getVal
+    call get_val
 
     movb $'X', matrix81(%rax)
     movb $'X', %dil
@@ -186,7 +186,7 @@ print_small_win:      # By Teo
     # 5
     mov %r12, %rdi
     mov $5, %rsi
-    call getVal
+    call get_val
 
     movb $'-', matrix81(%rax)
     movb $' ', %dil
@@ -196,7 +196,7 @@ print_small_win:      # By Teo
     # 6
     mov %r12, %rdi
     mov $6, %rsi
-    call getVal
+    call get_val
 
     movb $'X', matrix81(%rax)
     movb $'X', %dil
@@ -206,7 +206,7 @@ print_small_win:      # By Teo
     # 7
     mov %r12, %rdi
     mov $7, %rsi
-    call getVal
+    call get_val
 
     movb $'-', matrix81(%rax)
     movb $' ', %dil
@@ -216,7 +216,7 @@ print_small_win:      # By Teo
     # 8
     mov %r12, %rdi
     mov $8, %rsi
-    call getVal
+    call get_val
 
     movb $'X', matrix81(%rax)
     movb $'X', %dil
@@ -231,7 +231,7 @@ print_small_win:      # By Teo
     # 0
     mov %r12, %rdi
     mov $0, %rsi
-    call getVal
+    call get_val
 
     movb $'D', matrix81(%rax)
     movb $'D', %dil
@@ -241,7 +241,7 @@ print_small_win:      # By Teo
     # 1
     mov %r12, %rdi
     mov $1, %rsi
-    call getVal
+    call get_val
 
     movb $'D', matrix81(%rax)
     movb $'D', %dil
@@ -251,7 +251,7 @@ print_small_win:      # By Teo
     # 2
     mov %r12, %rdi
     mov $2, %rsi
-    call getVal
+    call get_val
 
     movb $'-', matrix81(%rax)
     movb $' ', %dil
@@ -261,7 +261,7 @@ print_small_win:      # By Teo
     # 3
     mov %r12, %rdi
     mov $3, %rsi
-    call getVal
+    call get_val
 
     movb $'D', matrix81(%rax)
     movb $'D', %dil
@@ -271,7 +271,7 @@ print_small_win:      # By Teo
     # 4
     mov %r12, %rdi
     mov $4, %rsi
-    call getVal
+    call get_val
 
     movb $'-', matrix81(%rax)
     movb $' ', %dil
@@ -281,7 +281,7 @@ print_small_win:      # By Teo
     # 5
     mov %r12, %rdi
     mov $5, %rsi
-    call getVal
+    call get_val
 
     movb $'D', matrix81(%rax)
     movb $'D', %dil
@@ -291,7 +291,7 @@ print_small_win:      # By Teo
     # 6
     mov %r12, %rdi
     mov $6, %rsi
-    call getVal
+    call get_val
 
     movb $'D', matrix81(%rax)
     movb $'D', %dil
@@ -301,7 +301,7 @@ print_small_win:      # By Teo
     # 7
     mov %r12, %rdi
     mov $7, %rsi
-    call getVal
+    call get_val
 
     movb $'D', matrix81(%rax)
     movb $'D', %dil
@@ -311,7 +311,7 @@ print_small_win:      # By Teo
     # 8
     mov %r12, %rdi
     mov $8, %rsi
-    call getVal
+    call get_val
 
     movb $'-', matrix81(%rax)
     movb $' ', %dil

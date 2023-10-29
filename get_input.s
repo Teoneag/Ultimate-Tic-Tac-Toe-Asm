@@ -44,21 +44,21 @@ get_input:                      # By Teo
     # get complex input
     get_complex_input:
         call clear
-        mov $outputHighscores,%rdi
+        mov $OutputHighscores,%rdi
         movl nrWinsX, %esi
         movl nrWinsO, %edx
         movl nrDraws, %ecx
         call printf
         
-        mov $outputCurrentPlayerSqare, %rdi
+        mov $OutputCurrentPlayerSqare, %rdi
         movb currentPlayer, %sil
         movl currentSmallMatrix, %edx
         incl %edx
         xor %rax, %rax
         call printf
-        call printBig
+        call print_big
         # ask user for the 2 nr
-        mov $outputYouCanChose, %rdi
+        mov $MessageYouCanChose, %rdi
         xor %rax, %rax
         call printf
 
@@ -66,7 +66,7 @@ get_input:                      # By Teo
         subq $16, %rsp          # make room for 1st, 2nd nr
         lea -8(%rbp), %rsi      # address of 1st nr
         lea -16(%rbp), %rdx     # address of 2nd nr
-        mov $input2Nr, %rdi     # format string
+        mov $Input2Nr, %rdi     # format string
         xor %rax, %rax          # clear rax
         call scanf              # read 1st nr
         mov -8(%rbp), %r12      # save 1st nr in %r12 (row)
@@ -105,7 +105,7 @@ get_input:                      # By Teo
     je get_simple_input
     # print Table already occupied, please chose another one!
     try_again_output:
-    mov $outputTableOccupied, %rdi
+    mov $MessageTableOccupied, %rdi
     xor %rax, %rax
     call printf
     jmp get_complex_input
@@ -113,23 +113,23 @@ get_input:                      # By Teo
     get_simple_input:
         call clear
     get_simple_input_without_clear:
-        mov $outputHighscores,%rdi
+        mov $OutputHighscores,%rdi
         movl nrWinsX, %esi
         movl nrWinsO, %edx
         movl nrDraws, %ecx
         call printf
         # print the current player
-        mov $outputCurrentPlayerSqare, %rdi
+        mov $OutputCurrentPlayerSqare, %rdi
         movb currentPlayer, %sil
         movl currentSmallMatrix, %edx
         incl %edx
         xor %rax, %rax
         call printf
 
-        call printBig
+        call print_big
 
         # ask user for 2 nr
-        mov $outputEnterCoord, %rdi
+        mov $OutputEnterCoord, %rdi
         movb currentPlayer, %sil
         xor %rax, %rax
         call printf
@@ -138,7 +138,7 @@ get_input:                      # By Teo
         subq $16, %rsp          # make room for 1st, 2nd nr
         lea -8(%rbp), %rsi      # address of 1st nr
         lea -16(%rbp), %rdx     # address of 2nd nr
-        mov $input2Nr, %rdi     # format string
+        mov $Input2Nr, %rdi     # format string
         xor %rax, %rax          # clear rax
         call scanf              # read 1st nr
         mov -8(%rbp), %r12      # save 1st nr in %r12 (row)
@@ -170,7 +170,7 @@ get_input:                      # By Teo
     # print Sqare already occupied, please chose another one
     try_again_output_2:
     call clear
-    mov $outputSqareOccupied, %rdi
+    mov $MessageSqareOccupied, %rdi
     xor %rax, %rax
     call printf
     jmp get_simple_input_without_clear

@@ -48,9 +48,9 @@ get_index_from_nr_x_y:        # By Teo
 
 
 
-	# call getVal
+	# call get_val
 	mov %r12, %rsi
-	call getVal
+	call get_val
 
 	# pop registers
 	pop %r15

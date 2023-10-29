@@ -2,7 +2,7 @@
     # matrix81 and the matrix9 with '-'
     # currentPlayer with 'X' 
     # currentSmallMatrix with 4
-    # move defaultBigMessage in bigMessage
+    # move MessageDefaultBig in bigMessage
 reset_game:                      # By Teo
     # prologue
     push %rbp
@@ -41,12 +41,12 @@ reset_game:                      # By Teo
     # initialize currentSmallMatrix with 9
     movl $9, currentSmallMatrix
 
-    # initialize bigMessage with defaultBigMessage
-    mov $defaultBigMessage, %r12
+    # initialize bigMessage with MessageDefaultBig
+    mov $MessageDefaultBig, %r12
     mov $0, %r13        # i = 0
     start_loop_3_init_game:
         mov (%r12), %r14                 # r14 = r12
-        movb %r14b, bigMessage(%r13)   # bigMessage[i] = defaultBigMessage[i]
+        movb %r14b, bigMessage(%r13)   # bigMessage[i] = MessageDefaultBig[i]
         inc %r12                        # i++
         inc %r13                        # i++
         cmp $765, %r13                   # i < 81

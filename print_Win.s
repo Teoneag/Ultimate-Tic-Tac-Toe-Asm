@@ -16,7 +16,7 @@ print_win:   # input:  a chard in rdi   O - O won  X - X won   - - Draw
 
     cmpb $'X',%r12b
     jne checkO
-    movq $OutputXWonCaca,%r13
+    movq $MessageXWon,%r13
     movl nrWinsX, %ecx
     incl %ecx
     movl %ecx, nrWinsX 
@@ -24,7 +24,7 @@ print_win:   # input:  a chard in rdi   O - O won  X - X won   - - Draw
     checkO:
     cmpb $'O',%r12b
     jne draw
-    movq $OutputOWon,%r13
+    movq $MessageOWon,%r13
     movl nrWinsO, %ecx
     incl %ecx
     movl %ecx, nrWinsO
@@ -33,12 +33,12 @@ print_win:   # input:  a chard in rdi   O - O won  X - X won   - - Draw
     movl nrDraws, %ecx
     incl %ecx
     movl %ecx, nrDraws
-    movq $OutputDraw,%r13
+    movq $MessageDraw,%r13
 
     gotoloop:
     mov $0,%rbx
 
-    mov $start,%rdi
+    mov $EffectStartBlinking,%rdi
     mov $'_',%rsi
     call printf
 
@@ -57,7 +57,7 @@ print_win:   # input:  a chard in rdi   O - O won  X - X won   - - Draw
     jmp loop1
     terminaFA:
 
-     mov $stop,%rdi
+     mov $EffectStopBlinking,%rdi
     mov $'_',%rsi
     call printf
 

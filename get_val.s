@@ -1,6 +1,6 @@
 # input: 0 - 8  what matrix to look at    0 - 8 what square to look at
 # output: the small index (rax)
-getVal:         # By Gali
+get_val:         # By Gali
     # prologue
     push %rbp
     mov %rsp, %rbp

@@ -1,5 +1,5 @@
 
-    smallIndexToBigIndex:   # By Gali
+    small_to_big_index:   # By Gali
                             # has one parameter in rdi, the index of the small matrix  and returns the index of the corresponding
                             # number but in the big output string thingie
     # prologue

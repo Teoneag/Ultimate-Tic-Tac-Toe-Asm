@@ -21,6 +21,141 @@ The game will have an old school vibe, so it will be rendered on the terminal, u
 - Alternative Play: If a player is directed to a smaller grid that is already won or completely occupied, they have the liberty to choose any available smaller grid for their next move.
 - Game Conclusion: The game concludes when a player wins the larger 9x9 grid by securing three smaller grids in a row (vertically, horizontally, or diagonally), or when no further legal moves are available, resulting in a draw.
 
+## 6. Running guide
+### a. Open ubuntu
+### b. Save folder
+### c. Go to folder and run
+- gcc -no-pie -o ultimate_tic_tac_toe ultimate_tic_tac_toe.s; ./ultimate_tic_tac_toe
+### d. Enjoy
+
+## 7. Testing
+### a. Win X
+- this input should win the game for X:
+2 2
+1 1
+2 2
+1 2
+2 2
+1 3
+2 1
+1 1
+2 1
+1 2
+2 1
+1 3
+2 3
+3 1
+2 3
+3 2
+2 3
+3 3
+
+### b. Win O
+- this input should win the game for O:
+1 1
+2 2
+3 3
+2 2
+3 2
+2 2
+3 1
+2 1
+1 1
+2 1
+1 2
+2 1
+1 3
+2 3
+3 1
+2 3
+3 2
+2 3
+3 3
+
+### c. Draw
+- this input should end in a draw:
+2 2
+2 2
+1 1
+2 2
+2 1
+2 2
+1 3
+2 2
+2 3
+2 2
+3 2
+1 1
+3 3
+3 3
+2 2
+1 2
+2 2
+3 1
+2 2
+3 3
+1 1
+1 1
+1 2
+3 3
+1 2
+1 1
+2 1
+1 1
+1 3
+1 1
+3 2
+2 2
+3 2
+3 3
+1 3
+3 3
+3 2
+1 3
+1 2
+2 1
+3 3
+1 3
+1 3
+1 1
+2 3
+1 3
+3 1
+1 1
+1 2
+1 3
+1 3
+3 1
+3 3
+3 1
+2 3
+3 1
+1 2
+2 3
+1 1
+2 3
+1 2
+2 3
+2 1
+3 2
+3 1
+3 2
+2 3
+2 3
+3 1
+2 1
+3 1
+2 3
+1 3
+1 3
+3 3
+2 1
+3 2
+3 3
+2 1
+1 3
+2 3
+
 ## Implementation
 The game will store the following data
 ### General data
@@ -52,158 +187,26 @@ The game will wait for user input, when typed it will check whether somebody won
     * main.s
     * win_screen
 - Gali
-    * addSmthToBigString
-    * smallIndexToBIgIndex
+    * add_smth_to_big_string
+    * small_to_big_index
     * get_val
     * clear
-    * welcomeScreen
+    * welcome_screen
 
 ## TODO
 - Teon
-    * restart game/exit
-    * counter high score
     * shower
 - Gali
-    * Art end screen
+    * Art
     * get some bitches
 
-- add art
-
-- Ester eggs
-    * there is a hidden table where you can win
-
-
 ## Bugs solved
-- Rares bug: the printBig function was trashing the value in %r12, so when having a specific input, the program would crash
+- Rares bug: the print_big function was trashing the value in %r12, so when having a specific input, the program would crash
 
 ## Learned
 - .fill 81 1 '-' can get seg fault?
 - to write conventions before starting
-- women don't like when you talk about programming
+- women don't like when you talk about programming!!!
 
 ## Special thanks
 Rares Popa - tester
-
-## Win X
-2 2
-1 1
-2 2
-1 2
-2 2
-1 3
-2 1
-1 1
-2 1
-1 2
-2 1
-1 3
-2 3
-3 1
-2 3
-3 2
-2 3
-3 3
-
-# Win O
-1 1
-2 2
-3 3
-2 2
-3 2
-2 2
-3 1
-2 1
-1 1
-2 1
-1 2
-2 1
-1 3
-2 3
-3 1
-2 3
-3 2
-2 3
-3 3
-
-# Draw
-2 2
-2 2
-1 1
-2 2
-2 1
-2 2
-1 3
-2 2
-2 3
-2 2
-3 2
-1 1
-3 3
-3 3
-2 2
-1 2
-2 2
-3 1
-2 2
-3 3
-1 1
-1 1
-1 2
-3 3
-1 2
-1 1
-2 1
-1 1
-1 3
-1 1
-3 2
-2 2
-3 2
-3 3
-1 3
-3 3
-3 2
-1 3
-1 2
-2 1
-3 3
-1 3
-1 3
-1 1
-2 3
-1 3
-3 1
-1 1
-1 2
-1 3
-1 3
-3 1
-3 3
-3 1
-2 3
-3 1
-1 2
-2 3
-1 1
-2 3
-1 2
-2 3
-2 1
-3 2
-3 1
-3 2
-2 3
-2 3
-3 1
-2 1
-3 1
-2 3
-1 3
-1 3
-3 3
-2 1
-3 2
-3 3
-2 1
-1 3
-2 3

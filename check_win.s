@@ -45,50 +45,50 @@ check_win:                      # By Teo
 
         mov %r9, %rdi
         mov $0, %rsi
-        call getVal
+        call get_val
         movb matrix81(%rax), %r10b
         push %r10                   # save r10
 
         mov %r9, %rdi
         mov $1, %rsi
-        call getVal
+        call get_val
         movb matrix81(%rax), %r11b
         push %r11                   # save r11
 
         mov %r9, %rdi
         mov $2, %rsi
-        call getVal
+        call get_val
         movb matrix81(%rax), %r12b
 
         mov %r9, %rdi
         mov $3, %rsi
-        call getVal
+        call get_val
         movb matrix81(%rax), %r13b
 
         mov %r9, %rdi
         mov $4, %rsi
-        call getVal
+        call get_val
         movb matrix81(%rax), %r14b
 
         mov %r9, %rdi
         mov $5, %rsi
-        call getVal
+        call get_val
         movb matrix81(%rax), %r15b
 
         mov %r9, %rdi
         mov $6, %rsi
-        call getVal
+        call get_val
         movb matrix81(%rax), %al
         push %rax               # save rax
 
         mov %r9, %rdi
         mov $7, %rsi
-        call getVal
+        call get_val
         movb matrix81(%rax), %bl
 
         mov %r9, %rdi
         mov $8, %rsi
-        call getVal
+        call get_val
         movb matrix81(%rax), %cl
         push %rcx               # save rcx
         // pop
