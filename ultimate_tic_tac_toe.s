@@ -1,7 +1,7 @@
 .include "add_smthn_to_big_screen.s"
 .include "check_win.s"
 .include "clear.s"
-.include "display_data.s"
+// .include "display_data.s"
 .include "get_index_from_nr_x_y.s"
 .include "get_input.s"
 .include "get_val.s"

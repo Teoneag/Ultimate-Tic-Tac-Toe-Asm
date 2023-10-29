@@ -1,6 +1,6 @@
 # Puts the char in the bigString giving the smallIndex
 # Input: char ('X', 'O', ' '), index [0, 80]
-print_char_at_small_index:      # By Teon     coaie ai implementat codu meu + 4 linii originale si ai zis ca made by teon :/
+print_char_at_small_index:      # By Teon
     # prologue
     push %rbp
     mov %rsp, %rbp

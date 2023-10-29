@@ -1,3 +1,4 @@
+# get input from user (simple or complex)
 # saves in the matrix81
 # updates the currentPlayer
 # updates the currentSmallMatrix

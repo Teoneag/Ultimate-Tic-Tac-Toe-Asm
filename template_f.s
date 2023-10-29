@@ -16,7 +16,7 @@ end:
 # 
 # Input: 
 # Output: 
-name_function:      # By 
+name_function:      # By Teo
     # prologue
     push %rbp
     mov %rsp, %rbp

@@ -179,18 +179,22 @@ The game will wait for user input, when typed it will check whether somebody won
 
 ## Done
 - Teon
+    * check_win
     * display_data
     * get_index_from_nr_x_y
     * get_input
-    * init_game
-    * check_win
-    * main.s
+    * print_char_at_small_index
+    * print_small_win
+    * reset_game
     * win_screen
+    * main.s
 - Gali
     * add_smth_to_big_string
-    * small_to_big_index
-    * get_val
     * clear
+    * get_val
+    * print_big
+    * print_win
+    * small_to_big_index
     * welcome_screen
 
 ## TODO
