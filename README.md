@@ -1,23 +1,38 @@
-# Assembly Game
-# - Ultimate Tic Tac Toe -
-## Teodor Neagoe, Horia Galitianu
+<div align = "center">
 
-## -1. Preview
+[TODO]: # (Make ascii art for welcome screen and put it here)
 
-<img src="ss\won_screen.png" width="500"/> 
+# Ultimate Tic Tac Toe - in assembly
+<div align = "right">
+
+By [Teodor Neagoe](https://github.com/Teoneag), [Horia Galitianu](https://github.com/horiagali)
+</div>
+</div>
 
 ## 0. Prolog :))
 Remember those days when Tic Tac Toe felt a tad too small? Introducing the solution: Ultimate Tic Tac Toe! Now, instead of just 9 squares, you've got... 9 squares. But wait for it, each of those squares is made up of another 9 squares! That's right, it's not just 9 times the fun, it's 81 times the confusion! Tic Tac Toe, now in Super Mega Ultra HD.
 
-## 1. Team
-I’m going to be working on this game with Horia Galitianu.
-## 2. OS
-The game will be targeted for Linux (Ubuntu).
-## 3. Libraries
-We’ll take on the challenge to make the game without using any libraries.
-## 4. Graphics
-The game will have an old school vibe, so it will be rendered on the terminal, using the ASCII characters. 
-## 5. Rules
+## 1. Using example
+### a) OS
+- The game is targeted for Linux (Ubuntu).
+- It can be run on Windows using [WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/install).
+### b) Running
+1. Open the ubuntu terminal in the folder where the game is located. For the blinking animation to work, we reccomand the windows terminal application, then run the ubuntu terminal from there using the following command:
+```sh
+ubuntu
+```
+If the folder is on windows, you can use the following command:
+```sh
+cd /mnt/path/to/folder
+```
+2. Run the following command:
+```sh
+./ultimate_tic_tac_toe
+```
+3. Read the rules
+4. Enjoy!
+
+## 2. Rules
 - Players: The game is played by two players, X and O, taking alternate turns.
 - Initial Move: Player X begins by placing a symbol anywhere on the 9x9 grid.
 - Relative Moves: The opponent (Player O) is then compelled to play within the corresponding 3x3 grid. The location of Player X's move dictates the smaller grid where Player O must play.
@@ -25,16 +40,27 @@ The game will have an old school vibe, so it will be rendered on the terminal, u
 - Alternative Play: If a player is directed to a smaller grid that is already won or completely occupied, they have the liberty to choose any available smaller grid for their next move.
 - Game Conclusion: The game concludes when a player wins the larger 9x9 grid by securing three smaller grids in a row (vertically, horizontally, or diagonally), or when no further legal moves are available, resulting in a draw.
 
-## 6. Running guide
-### a. Open ubuntu
-### b. Save folder
-### c. Go to folder and run
-- gcc -no-pie -o ultimate_tic_tac_toe ultimate_tic_tac_toe.s; ./ultimate_tic_tac_toe
-### d. Enjoy
+## 3. Snapshots
+<img src="ss\won_screen.png" width="500"/> 
 
-## 7. Testing
+## 4. Compiling guide
+### a. Check [Os requirements](#a-os)
+### b. Install gcc - run this command from the ubuntu terminal, as administrator, or using sudo
+```sh
+apt update && apt upgrade -y && apt install build-essential gdb -y
+```
+### c. Save folder - coppy it or use git clone
+```sh
+git clone https://github.com/Teoneag/Ultimate_Tic_Tac_Toe_asm.git
+```
+### d. Go to folder and run
+```sh
+gcc -no-pie -o ultimate_tic_tac_toe ultimate_tic_tac_toe.s; ./ultimate_tic_tac_toe
+```
+
+## 5. Testing
 ### a. Win X
-- this input should win the game for X:
+This input should win the game for X:
 2 2
 1 1
 2 2
@@ -55,7 +81,7 @@ The game will have an old school vibe, so it will be rendered on the terminal, u
 3 3
 
 ### b. Win O
-- this input should win the game for O:
+This input should win the game for O:
 1 1
 2 2
 3 3
@@ -77,7 +103,7 @@ The game will have an old school vibe, so it will be rendered on the terminal, u
 3 3
 
 ### c. Draw
-- this input should end in a draw:
+This input should end in a draw:
 2 2
 2 2
 1 1
@@ -160,7 +186,7 @@ The game will have an old school vibe, so it will be rendered on the terminal, u
 1 3
 2 3
 
-## Implementation
+## 6. Implementation
 The game will store the following data
 ### General data
 - Wins X
@@ -181,7 +207,7 @@ The table will be displayed at all time, bellow who’s player’s turn it is, a
 
 The game will wait for user input, when typed it will check whether somebody won.
 
-## Done
+## 7. Done
 - Teon
     * check_win
     * display_data
@@ -201,20 +227,30 @@ The game will wait for user input, when typed it will check whether somebody won
     * small_to_big_index
     * welcome_screen
 
-## TODO
+## 8. TODO
+- Critical
+    * make
+    * bag get draw when it should be win (Ta + Andrei Ion)
+    * add game rules
 - Teon
+    * reset button
     * shower
 - Gali
     * Art
-    * get some bitches
+        - loading screen art - add it to github as well
+    * get some b*itches
 
-## Bugs solved
+## 9. Bugs solved
 - Rares bug: the print_big function was trashing the value in %r12, so when having a specific input, the program would crash
 
-## Learned
+## 10. Learned
 - .fill 81 1 '-' can get seg fault?
 - to write conventions before starting
 - women don't like when you talk about programming!!!
 
-## Special thanks
-Rares Popa - tester
+## 11. Special thanks
+- Rares Popa - tester
+- Andrei Ion - tester
+- TA that signed our project - tester
+- Mete - tester
+- Gali's mom - "zacusca" provider
