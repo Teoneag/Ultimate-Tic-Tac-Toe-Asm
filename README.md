@@ -14,23 +14,42 @@ Remember those days when Tic Tac Toe felt a tad too small? Introducing the solut
 
 ## 1. Using example
 ### a) OS
-- The game is targeted for Linux (Ubuntu).
-- It can be run on Windows using [WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/install).
-### b) Running
-1. Open the ubuntu terminal in the folder where the game is located. For the blinking animation to work, we reccomand the windows terminal application, then run the ubuntu terminal from there using the following command:
+The game is targeted for Linux (Ubuntu).
+- It can be run on Windows using WSL (Windows Subsystem for Linux) - [click here for official instalation guide](https://learn.microsoft.com/en-us/windows/wsl/install).
+
+### b) Terminal
+Open the Ubuntu terminal.
+* If you use WSL, for the blinking animation to work, we reccomand the Windows terminal application, so run the ubuntu terminal from there using the following command:
 ```sh
 ubuntu
 ```
-If the folder is on windows, you can use the following command:
+* If the folder is on windows, you can use the following command:
 ```sh
 cd /mnt/path/to/folder
 ```
-2. Run the following command:
+
+### c) Compiling
+As the compiled file is system specific, you need to complile it yourself. For this you need gcc. If you don't have it, install it by running the following command from the ubuntu terminal, as administrator, or using sudo:
+```sh
+apt update && apt upgrade -y && apt install build-essential gdb -y
+```
+Open the ubuntu terminal in the folder where you saved the game, or clone it from Github (for this you need [Git](https://git-scm.com/) installed) using the following command:
+```sh
+git clone https://github.com/Teoneag/Ultimate_Tic_Tac_Toe_asm.git
+```
+Compile it using the following commnad:
+```sh
+gcc -no-pie -o ultimate_tic_tac_toe ultimate_tic_tac_toe.s
+```
+
+### d) Running
+Run the following command:
 ```sh
 ./ultimate_tic_tac_toe
 ```
-3. Read the rules
-4. Enjoy!
+
+### e) Read the rules
+### f) Enjoy!
 
 ## 2. Rules
 - Players: The game is played by two players, X and O, taking alternate turns.
@@ -42,21 +61,6 @@ cd /mnt/path/to/folder
 
 ## 3. Snapshots
 <img src="ss\won_screen.png" width="500"/> 
-
-## 4. Compiling guide
-### a. Check [Os requirements](#a-os)
-### b. Install gcc - run this command from the ubuntu terminal, as administrator, or using sudo
-```sh
-apt update && apt upgrade -y && apt install build-essential gdb -y
-```
-### c. Save folder - coppy it or use git clone
-```sh
-git clone https://github.com/Teoneag/Ultimate_Tic_Tac_Toe_asm.git
-```
-### d. Go to folder and run
-```sh
-gcc -no-pie -o ultimate_tic_tac_toe ultimate_tic_tac_toe.s; ./ultimate_tic_tac_toe
-```
 
 ## 5. Testing
 ### a. Win X
@@ -235,6 +239,7 @@ The game will wait for user input, when typed it will check whether somebody won
 - Teon
     * reset button
     * shower
+    * move ugly strings from main to file
 - Gali
     * Art
         - loading screen art - add it to github as well
