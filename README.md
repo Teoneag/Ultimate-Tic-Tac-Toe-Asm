@@ -17,7 +17,7 @@
 </pre>
 <div align = "right">
 
-By [Teodor Neagoe](https://github.com/Teoneag), [Horia Galitianu](https://github.com/horiagali)
+By [Teodor Neagoe](https://github.com/Teoneag) & [Horia Galitianu](https://github.com/horiagali)
 </div>
 </div>
 
