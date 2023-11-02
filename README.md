@@ -62,7 +62,7 @@ Run the following command:
 ## 3. Snapshots
 <img src="ss\won_screen.png" width="500"/> 
 
-## 5. Testing
+## 4. Testing
 ### a. Win X
 This input should win the game for X:
 2 2
@@ -190,7 +190,7 @@ This input should end in a draw:
 1 3
 2 3
 
-## 6. Implementation
+## 5. Implementation
 The game will store the following data
 ### General data
 - Wins X
@@ -211,7 +211,7 @@ The table will be displayed at all time, bellow who’s player’s turn it is, a
 
 The game will wait for user input, when typed it will check whether somebody won.
 
-## 7. Done
+## 6. Done
 - Teon
     * check_win
     * display_data
@@ -231,7 +231,7 @@ The game will wait for user input, when typed it will check whether somebody won
     * small_to_big_index
     * welcome_screen
 
-## 8. TODO
+## 7. TODO
 - Critical
     * make
     * bag get draw when it should be win (Ta + Andrei Ion)
@@ -245,15 +245,15 @@ The game will wait for user input, when typed it will check whether somebody won
         - loading screen art - add it to github as well
     * get some b*itches
 
-## 9. Bugs solved
+## 8. Bugs solved
 - Rares bug: the print_big function was trashing the value in %r12, so when having a specific input, the program would crash
 
-## 10. Learned
+## 9. Learned
 - .fill 81 1 '-' can get seg fault?
 - to write conventions before starting
 - women don't like when you talk about programming!!!
 
-## 11. Special thanks
+## 10. Special thanks
 - Rares Popa - tester
 - Andrei Ion - tester
 - TA that signed our project - tester
