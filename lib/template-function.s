@@ -1,5 +1,22 @@
+.global main
+main:
+    # prologue
+    push %rbp
+    mov %rsp, %rbp
 
-welcome_screen:      # By Gali ofc
+    call name_function
+
+    #epilogue
+    mov %rbp, %rsp
+    pop %rbp
+end:
+    mov $0, %rdi
+    call exit
+    
+# 
+# Input: 
+# Output: 
+template_function:      # By Teo
     # prologue
     push %rbp
     mov %rsp, %rbp
@@ -12,22 +29,7 @@ welcome_screen:      # By Gali ofc
     push %r14
     push %r15
 
-    call clear
-
-    mov $MessageWelcome,%rdi
-    call printf
-
-    call scanf
-
-    call clear
-
-    mov $OutputHighscores,%rdi
-    movl nrWinsX, %esi
-    movl nrWinsO, %edx
-    movl nrDraws, %ecx
-    call printf
-
-    call print_big
+    # body
 
     # pop registers
     pop %r15

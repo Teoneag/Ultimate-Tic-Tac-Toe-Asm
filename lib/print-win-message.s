@@ -1,4 +1,4 @@
-print_win:   # input:  a chard in rdi   O - O won  X - X won   - - Draw  
+print_win_message:   # input:  a chard in rdi   O - O won  X - X won   - - Draw  
     # prologue    by Gali ofc
     push %rbp
     mov %rsp, %rbp

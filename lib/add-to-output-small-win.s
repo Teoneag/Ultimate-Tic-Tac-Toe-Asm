@@ -1,7 +1,7 @@
 # Writes O or X in the smallMatrix
 # Input: char ('X'/'O'); nr [0, 8] of the smallMatrix
 # TODO: implement draw
-print_small_win:      # By Teo
+add_to_output_small_win:      # By Teo
     # prologue
     push %rbp
     mov %rsp, %rbp
@@ -38,92 +38,92 @@ print_small_win:      # By Teo
     # 0
     mov %r12, %rdi
     mov $0, %rsi
-    call get_val
+    call get_index_from_nr_nr
     
     movb $'O', matrix81(%rax)
     movb $'O', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 1
     mov %r12, %rdi
     mov $1, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'O', matrix81(%rax)
     movb $'O', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 2
     mov %r12, %rdi
     mov $2, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'O', matrix81(%rax)
     movb $'O', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 3
     mov %r12, %rdi
     mov $3, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'O', matrix81(%rax)
     movb $'O', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 4
     mov %r12, %rdi
     mov $4, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'-', matrix81(%rax)
     movb $' ', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 5
     mov %r12, %rdi
     mov $5, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'O', matrix81(%rax)
     movb $'O', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 6
     mov %r12, %rdi
     mov $6, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'O', matrix81(%rax)
     movb $'O', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 7
     mov %r12, %rdi
     mov $7, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'O', matrix81(%rax)
     movb $'O', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 8
     mov %r12, %rdi
     mov $8, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'O', matrix81(%rax)
     movb $'O', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     jmp end_add_win
 
@@ -136,92 +136,92 @@ print_small_win:      # By Teo
     # 0
     mov %r12, %rdi
     mov $0, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'X', matrix81(%rax)
     movb $'X', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 1
     mov %r12, %rdi
     mov $1, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'-', matrix81(%rax)
     movb $' ', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 2
     mov %r12, %rdi
     mov $2, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'X', matrix81(%rax)
     movb $'X', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 3
     mov %r12, %rdi
     mov $3, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'-', matrix81(%rax)
     movb $' ', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 4
     mov %r12, %rdi
     mov $4, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'X', matrix81(%rax)
     movb $'X', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 5
     mov %r12, %rdi
     mov $5, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'-', matrix81(%rax)
     movb $' ', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 6
     mov %r12, %rdi
     mov $6, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'X', matrix81(%rax)
     movb $'X', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 7
     mov %r12, %rdi
     mov $7, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'-', matrix81(%rax)
     movb $' ', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 8
     mov %r12, %rdi
     mov $8, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'X', matrix81(%rax)
     movb $'X', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
     jmp end_add_win
     
     print_D_add_win:
@@ -231,92 +231,92 @@ print_small_win:      # By Teo
     # 0
     mov %r12, %rdi
     mov $0, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'D', matrix81(%rax)
     movb $'D', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 1
     mov %r12, %rdi
     mov $1, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'D', matrix81(%rax)
     movb $'D', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 2
     mov %r12, %rdi
     mov $2, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'-', matrix81(%rax)
     movb $' ', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 3
     mov %r12, %rdi
     mov $3, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'D', matrix81(%rax)
     movb $'D', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 4
     mov %r12, %rdi
     mov $4, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'-', matrix81(%rax)
     movb $' ', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 5
     mov %r12, %rdi
     mov $5, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'D', matrix81(%rax)
     movb $'D', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 6
     mov %r12, %rdi
     mov $6, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'D', matrix81(%rax)
     movb $'D', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 7
     mov %r12, %rdi
     mov $7, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'D', matrix81(%rax)
     movb $'D', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     # 8
     mov %r12, %rdi
     mov $8, %rsi
-    call get_val
+    call get_index_from_nr_nr
 
     movb $'-', matrix81(%rax)
     movb $' ', %dil
     mov %rax, %rsi
-    call print_char_at_small_index
+    call add_to_output_from_small_index
 
     end_add_win:
 

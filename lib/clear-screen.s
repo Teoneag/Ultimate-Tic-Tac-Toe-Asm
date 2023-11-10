@@ -1,4 +1,4 @@
-clear:                      # By Gali
+clear_screen:                      # By Gali
     # Write the escape code to clear the screen
     mov $1, %rdi          # File descriptor 1 (stdout)
     mov $1, %rax          # System call number for write

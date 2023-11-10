@@ -16,14 +16,14 @@ win_screen:      # By Teo
     # save input in %r12
     mov %rdi, %r12
 
-    call clear
+    call clear_screen
 
     movl $10, currentSmallMatrix
 
-    call print_big
+    call print_matrix
 
     mov %r12, %rdi
-    call print_win
+    call print_win_message
     
     // call scanf              # wait for input
     # TODO wait for user input to display next things

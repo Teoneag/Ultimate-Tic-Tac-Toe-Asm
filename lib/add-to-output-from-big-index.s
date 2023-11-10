@@ -1,6 +1,6 @@
 # input: character "X" in rdi, big index in rsi, the big message in rdx.
 # output: the big string with "X" in the n'th position
-add_smthn_to_big_string:        # By Gali    
+add_to_output_from_big_index:        # By Gali    
     # prologue
     push %rbp
     mov %rsp, %rbp

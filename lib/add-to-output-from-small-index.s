@@ -1,6 +1,6 @@
 # Puts the char in the bigString giving the smallIndex
 # Input: char ('X', 'O', ' '), index [0, 80]
-print_char_at_small_index:      # By Teon
+add_to_output_from_small_index:      # By Teon
     # prologue
     push %rbp
     mov %rsp, %rbp
@@ -21,7 +21,7 @@ print_char_at_small_index:      # By Teon
     movb %r12b, %dil
     mov %rax, %rsi
     mov $bigMessage, %rdx
-    call add_smthn_to_big_string 
+    call add_to_output_from_big_index 
 
     # pop registers
     pop %r15

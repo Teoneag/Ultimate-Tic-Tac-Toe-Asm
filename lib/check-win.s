@@ -45,50 +45,50 @@ check_win:                      # By Teo
 
         mov %r9, %rdi
         mov $0, %rsi
-        call get_val
+        call get_index_from_nr_nr
         movb matrix81(%rax), %r10b
         push %r10                   # save r10
 
         mov %r9, %rdi
         mov $1, %rsi
-        call get_val
+        call get_index_from_nr_nr
         movb matrix81(%rax), %r11b
         push %r11                   # save r11
 
         mov %r9, %rdi
         mov $2, %rsi
-        call get_val
+        call get_index_from_nr_nr
         movb matrix81(%rax), %r12b
 
         mov %r9, %rdi
         mov $3, %rsi
-        call get_val
+        call get_index_from_nr_nr
         movb matrix81(%rax), %r13b
 
         mov %r9, %rdi
         mov $4, %rsi
-        call get_val
+        call get_index_from_nr_nr
         movb matrix81(%rax), %r14b
 
         mov %r9, %rdi
         mov $5, %rsi
-        call get_val
+        call get_index_from_nr_nr
         movb matrix81(%rax), %r15b
 
         mov %r9, %rdi
         mov $6, %rsi
-        call get_val
+        call get_index_from_nr_nr
         movb matrix81(%rax), %al
         push %rax               # save rax
 
         mov %r9, %rdi
         mov $7, %rsi
-        call get_val
+        call get_index_from_nr_nr
         movb matrix81(%rax), %bl
 
         mov %r9, %rdi
         mov $8, %rsi
-        call get_val
+        call get_index_from_nr_nr
         movb matrix81(%rax), %cl
         push %rcx               # save rcx
         // pop
@@ -224,8 +224,8 @@ check_win:                      # By Teo
 
     # colour the values in matrix81
     movb %r12b, %dil        # rdi = character that won
-    movb (%rsp), %sil       # rsi = 0 - 8 unde dai print_small_win 
-    call print_small_win
+    movb (%rsp), %sil       # rsi = 0 - 8 unde dai add_to_output_small_win 
+    call add_to_output_small_win
 
     # check win for matrix9
     mov $9, %rdi

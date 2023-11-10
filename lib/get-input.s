@@ -44,7 +44,7 @@ get_input:                      # By Teo
 
     # get complex input
     get_complex_input:
-        call clear
+        call clear_screen
         mov $OutputHighscores,%rdi
         movl nrWinsX, %esi
         movl nrWinsO, %edx
@@ -57,7 +57,7 @@ get_input:                      # By Teo
         incl %edx
         xor %rax, %rax
         call printf
-        call print_big
+        call print_matrix
         # ask user for the 2 nr
         mov $MessageYouCanChose, %rdi
         xor %rax, %rax
@@ -68,7 +68,7 @@ get_input:                      # By Teo
         lea -8(%rbp), %rsi      # address of 1st nr
         lea -16(%rbp), %rdx     # address of 2nd nr
         mov $Input2Nr, %rdi     # format string
-        xor %rax, %rax          # clear rax
+        xor %rax, %rax          # clear_screen rax
         call scanf              # read 1st nr
         mov -8(%rbp), %r12      # save 1st nr in %r12 (row)
         dec %r12                # [1, 3] -> [0, 2]
@@ -112,8 +112,8 @@ get_input:                      # By Teo
     jmp get_complex_input
 
     get_simple_input:
-        call clear
-    get_simple_input_without_clear:
+        call clear_screen
+    get_simple_input_without_clear_screen:
         mov $OutputHighscores,%rdi
         movl nrWinsX, %esi
         movl nrWinsO, %edx
@@ -127,7 +127,7 @@ get_input:                      # By Teo
         xor %rax, %rax
         call printf
 
-        call print_big
+        call print_matrix
 
         # ask user for 2 nr
         mov $OutputEnterCoord, %rdi
@@ -140,7 +140,7 @@ get_input:                      # By Teo
         lea -8(%rbp), %rsi      # address of 1st nr
         lea -16(%rbp), %rdx     # address of 2nd nr
         mov $Input2Nr, %rdi     # format string
-        xor %rax, %rax          # clear rax
+        xor %rax, %rax          # clear_screen rax
         call scanf              # read 1st nr
         mov -8(%rbp), %r12      # save 1st nr in %r12 (row)
         dec %r12                # [1, 3] -> [0, 2]
@@ -170,11 +170,11 @@ get_input:                      # By Teo
     je update_get_input
     # print Sqare already occupied, please chose another one
     try_again_output_2:
-    call clear
+    call clear_screen
     mov $MessageSqareOccupied, %rdi
     xor %rax, %rax
     call printf
-    jmp get_simple_input_without_clear
+    jmp get_simple_input_without_clear_screen
 
     update_get_input:
     # update matrix81(%rax) to %r14

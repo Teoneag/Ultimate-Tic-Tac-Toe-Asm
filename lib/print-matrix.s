@@ -1,5 +1,5 @@
 // input: nr 0 -8 in rdi, which square to blink  9 for blink all 10 for blink none
-print_big:      # By gali ofc     
+print_matrix:      # By gali ofc     
     # prologue
     push %rbp
     mov %rsp, %rbp
@@ -56,7 +56,7 @@ print_big:      # By gali ofc
 
     mov (%rsp),%rdi
     mov $0,%rsi
-    call get_val
+    call get_index_from_nr_nr
     mov %rax, %r14              # r14 is start, r15 is stop
     mov %r14,%rdi
     call small_to_big_index
@@ -64,7 +64,7 @@ print_big:      # By gali ofc
     dec %r14
     mov (%rsp),%rdi
     mov $2,%rsi
-    call get_val
+    call get_index_from_nr_nr
     mov %rax,%r15
     mov %r15,%rdi
     call small_to_big_index

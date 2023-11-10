@@ -52,13 +52,13 @@ git clone https://github.com/Teoneag/Ultimate_Tic_Tac_Toe_asm.git
 ```
 Compile it using the following commnad:
 ```sh
-gcc -no-pie -o ultimate_tic_tac_toe ultimate_tic_tac_toe.s
+gcc -no-pie -o Ultimate-Tic-Tac-Toe-Assembly Ultimate-Tic-Tac-Toe-Assembly.s
 ```
 
 ### d) Running
 Run the following command:
 ```sh
-./ultimate_tic_tac_toe
+./Ultimate-Tic-Tac-Toe-Assembly
 ```
 
 ### e) Read the rules
@@ -73,7 +73,7 @@ Run the following command:
 - Game Conclusion: The game concludes when a player wins the larger 9x9 grid by securing three smaller grids in a row (vertically, horizontally, or diagonally), or when no further legal moves are available, resulting in a draw.
 
 ## 3. Snapshots
-<img src="ss\won_screen.png" width="500"/> 
+<img src="screenshots\won-screen.png" width="500"/> 
 
 ## 4. Testing
 ### a. Win X
@@ -226,21 +226,23 @@ The game will wait for user input, when typed it will check whether somebody won
 
 ## 6. Done
 - Teon
+    * add_to_output_from_small_index
+    * add_to_output_small_win
     * check_win
     * display_data
     * get_index_from_nr_x_y
     * get_input
-    * print_char_at_small_index
-    * print_small_win
     * reset_game
+    * template_function
     * win_screen
-    * main.s
+    * main
+
 - Gali
-    * add_smth_to_big_string
-    * clear
-    * get_val
-    * print_big
-    * print_win
+    * add_to_output_from_big_index
+    * clear_screen
+    * get_index_from_nr_nr
+    * print_matrix
+    * print_win_message
     * small_to_big_index
     * welcome_screen
 
@@ -259,7 +261,7 @@ The game will wait for user input, when typed it will check whether somebody won
     * get some b*itches
 
 ## 8. Bugs solved
-- Rares bug: the print_big function was trashing the value in %r12, so when having a specific input, the program would crash
+- Rares bug: the print_matrix function was trashing the value in %r12, so when having a specific input, the program would crash
 
 ## 9. Learned
 - .fill 81 1 '-' can get seg fault?

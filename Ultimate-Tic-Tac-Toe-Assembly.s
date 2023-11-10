@@ -1,18 +1,19 @@
-.include "lib/add_smthn_to_big_screen.s"
-.include "lib/check_win.s"
-.include "lib/clear.s"
-// .include "display_data.s"
-.include "lib/get_index_from_nr_x_y.s"
-.include "lib/get_input.s"
-.include "lib/get_val.s"
-.include "lib/print_big.s"
-.include "lib/print_char_at_small_index.s"
-.include "lib/print_small_win.s"
-.include "lib/print_win.s"
-.include "lib/reset_game.s"
-.include "lib/small_to_big_index.s"
-.include "lib/welcome_screen.s"
-.include "lib/win_screen.s"
+.include "lib/add-to-output-from-big-index.s"
+.include "lib/add-to-output-from-small-index.s"
+.include "lib/add-to-output-small-win.s"
+.include "lib/check-win.s"
+.include "lib/clear-screen.s"
+// .include "lib/display-data.s"
+.include "lib/get-index-from-nr-nr.s"
+.include "lib/get-index-from-nr-x-y.s"
+.include "lib/get-input.s"
+.include "lib/print-matrix.s"
+.include "lib/print-win-message.s"
+.include "lib/reset-game.s"
+.include "lib/small-to-big-index.s"
+.include "lib/welcome-screen.s"
+.include "lib/win-screen.s"
+
 
 .data
 matrix81: .skip 81              # 9x9 matrix: - for nothing, O for O, X for X
@@ -81,7 +82,7 @@ main:
 
         movb currentPlayer, %dil
         movl index81, %esi
-        call print_char_at_small_index
+        call add_to_output_from_small_index
         
         movl currentSmallMatrix, %edi
         call check_win
