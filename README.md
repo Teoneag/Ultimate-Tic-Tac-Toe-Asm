@@ -19,6 +19,7 @@
 
 By [Teodor Neagoe](https://github.com/Teoneag) & [Horia Galitianu](https://github.com/horiagali)
 </div>
+<img src="gifs/table.gif" width="400"/>
 </div>
 
 ## 0. Prolog :))
@@ -73,7 +74,7 @@ Run the following command:
 - Game Conclusion: The game concludes when a player wins the larger 9x9 grid by securing three smaller grids in a row (vertically, horizontally, or diagonally), or when no further legal moves are available, resulting in a draw.
 
 ## 3. Snapshots
-<img src="screenshots\won-screen.png" width="500"/> 
+<img src="gifs/full-game-screen.gif" width="900"/>
 
 ## 4. Testing
 ### a. Win X
