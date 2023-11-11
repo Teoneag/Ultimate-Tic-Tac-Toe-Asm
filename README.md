@@ -53,13 +53,21 @@ git clone https://github.com/Teoneag/Ultimate_Tic_Tac_Toe_asm.git
 ```
 Compile it using the following commnad:
 ```sh
-gcc -no-pie -o Ultimate-Tic-Tac-Toe-Assembly Ultimate-Tic-Tac-Toe-Assembly.s
+make
+```
+Which internally runs this command:
+```sh
+gcc -no-pie -o Ultimate_Tic_Tac_Toe_Assembly Ultimate_Tic_Tac_Toe_Assembly.s
 ```
 
 ### d) Running
 Run the following command:
 ```sh
-./Ultimate-Tic-Tac-Toe-Assembly
+make run
+```
+Which internally runs this command:
+```sh
+gcc -no-pie -o Ultimate_Tic_Tac_Toe_Assembly Ultimate_Tic_Tac_Toe_Assembly.s
 ```
 
 ### e) Read the rules
@@ -205,25 +213,23 @@ This input should end in a draw:
 2 3
 
 ## 5. Implementation
-The game will store the following data
+The game stores the following data
 ### General data
-- Wins X
-- Wins O
+- Nr of wins X
+- Nr of wins O
+- Nr of draws
+
 ### Current game state
 - current turn
-0 value: no value
--1: O
-1: X
+    * 0 value: no value
+    * -1: O
+    * 1: X
 - the matrix of the “big” table: 3x3 (an array in memory)
 - a matrix for the smaller squares: 9x9
     * coords_to_index(x, y) = 9 * (x - 1) + y
 ### Current game display
 - String: for all characters on the screen
-    3 * 5 * 11 * 
-
-The table will be displayed at all time, bellow who’s player’s turn it is, and bellow you can enter the desired position where you want to place your X/O
-
-The game will wait for user input, when typed it will check whether somebody won.
+    * 3 * 5 * 11 * 
 
 ## 6. Done
 - Teon
@@ -236,7 +242,7 @@ The game will wait for user input, when typed it will check whether somebody won
     * reset_game
     * template_function
     * win_screen
-    * main
+    * main, make, readme
 
 - Gali
     * add_to_output_from_big_index
