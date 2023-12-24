@@ -71,6 +71,7 @@ gcc -no-pie -o Ultimate_Tic_Tac_Toe_Assembly Ultimate_Tic_Tac_Toe_Assembly.s
 ```
 
 ### e) Read the rules
+
 ### f) Enjoy!
 
 ## 2. Rules
@@ -85,6 +86,7 @@ gcc -no-pie -o Ultimate_Tic_Tac_Toe_Assembly Ultimate_Tic_Tac_Toe_Assembly.s
 <img src="gifs/full-game-screen.gif" width="900"/>
 
 ## 4. Testing
+
 ### a. Win X
 This input should win the game for X:
 2 2
@@ -214,22 +216,27 @@ This input should end in a draw:
 
 ## 5. Implementation
 The game stores the following data
+
 ### General data
 - Nr of wins X
 - Nr of wins O
 - Nr of draws
 
 ### Current game state
-- current turn
-    * 0 value: no value
-    * -1: O
-    * 1: X
-- the matrix of the “big” table: 3x3 (an array in memory)
-- a matrix for the smaller squares: 9x9
+- currentPlayer: X or O
+- matrix9 = the matrix of the “big” table: 3 x 3 (an array in memory)
+    * \- for empty
+    * D for draw on that square
+    * X for X won that square
+    * O for O won that square
+- index9 = the index of the current square in the matrix9: 0 - 8
+- matrix81 = a matrix for the smaller squares: 9 x 9 (an array in memory)
     * coords_to_index(x, y) = 9 * (x - 1) + y
+- index81 = the index of the current square in the matrix81: 0 - 80
+- currentInput = the current input: 0 - 8, 9 for chose any
+
 ### Current game display
-- String: for all characters on the screen
-    * 3 * 5 * 11 * 
+- stringPrintTable = string for printing the table (table lines + content)
 
 ## 6. Done
 - Teon
@@ -255,13 +262,15 @@ The game stores the following data
 
 ## 7. TODO
 - Critical
-    * make
-    * bag get draw when it should be win (Ta + Andrei Ion)
+    * fix bug get draw when it should be win (Ta + Andrei Ion)
     * add game rules
+    * add better menu + end screen
+    * be able to save game, close game, open game 
+    * timer
 - Teon
     * reset button
-    * shower
     * move ugly strings from main to file
+    * shower
 - Gali
     * Art
         - loading screen art - add it to github as well
@@ -271,7 +280,7 @@ The game stores the following data
 - Rares bug: the print_matrix function was trashing the value in %r12, so when having a specific input, the program would crash
 
 ## 9. Learned
-- .fill 81 1 '-' can get seg fault?
+- .fill 81 1 '-' can get seg fault? - why????
 - to write conventions before starting
 - women don't like when you talk about programming!!!
 

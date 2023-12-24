@@ -1,7 +1,7 @@
 # get input from user (simple or complex)
 # saves in the matrix81
 # updates the currentPlayer
-# updates the currentSmallMatrix
+# updates the index9
 get_input:                      # By Teo
     # prologue
     push %rbp
@@ -24,22 +24,22 @@ get_input:                      # By Teo
     movb $'O', currentPlayer
     end_set_O:
 
-    # update the currentSmallMatrix
+    # update the index9
     movl currentInput, %r12d
-    movl %r12d, currentSmallMatrix
+    movl %r12d, index9
 
 
-    # if (matrix9[currentSmallMatrix] != '-') currentSmallMatrix = 9
+    # if (matrix9[index9] != '-') index9 = 9
     movb matrix9(%r12), %r13b
     cmpb $'-', %r13b
     jne set_9
     jmp end_set_9
     set_9:
-    movl $9, currentSmallMatrix
+    movl $9, index9
     end_set_9:
 
-    # check if the currentSmallMatrix is 9
-    cmpl $9, currentSmallMatrix
+    # check if the index9 is 9
+    cmpl $9, index9
     jne get_simple_input
 
     # get complex input
@@ -53,7 +53,7 @@ get_input:                      # By Teo
         
         mov $OutputCurrentPlayerSqare, %rdi
         movb currentPlayer, %sil
-        movl currentSmallMatrix, %edx
+        movl index9, %edx
         incl %edx
         xor %rax, %rax
         call printf
@@ -86,16 +86,16 @@ get_input:                      # By Teo
         cmp $2, %r13
         jg try_again_output
 
-        # update the currentSmallMatrix = %r13 + %r12 * 3
-        movl %r13d, currentSmallMatrix
-        addl %r12d, currentSmallMatrix
-        addl %r12d, currentSmallMatrix
-        addl %r12d, currentSmallMatrix
+        # update the index9 = %r13 + %r12 * 3
+        movl %r13d, index9
+        addl %r12d, index9
+        addl %r12d, index9
+        addl %r12d, index9
 
 
 
 
-    # if (matrix9[currentSmallMatrix] != '-') ask again
+    # if (matrix9[index9] != '-') ask again
     # calculate index: r12 * 3 + r13
     mov %r13, %r14
     add %r12, %r14
@@ -122,7 +122,7 @@ get_input:                      # By Teo
         # print the current player
         mov $OutputCurrentPlayerSqare, %rdi
         movb currentPlayer, %sil
-        movl currentSmallMatrix, %edx
+        movl index9, %edx
         incl %edx
         xor %rax, %rax
         call printf
@@ -149,7 +149,7 @@ get_input:                      # By Teo
 
 
     # get the index of the matrix81
-    movl currentSmallMatrix, %edi   # nr
+    movl index9, %edi   # nr
     mov %r12, %rsi                  # col
     mov %r13, %rdx                  # row
     call get_index_from_nr_x_y      # index is in %rax

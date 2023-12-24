@@ -1,8 +1,8 @@
 # Initializes the
     # matrix81 and the matrix9 with '-'
     # currentPlayer with 'X' 
-    # currentSmallMatrix with 4
-    # move MessageDefaultBig in bigMessage
+    # index9 with 4
+    # move MessageDefaultBig in stringPrintTable
 reset_game:                      # By Teo
     # prologue
     push %rbp
@@ -35,18 +35,18 @@ reset_game:                      # By Teo
     # initialize currentPlayer with 'O' (The init switches it)
     movb $'O', currentPlayer
 
-    # initialize currentInput (The init makes the currentSmallMatrix 4)
+    # initialize currentInput (The init makes the index9 4)
     movl $9, currentInput
 
-    # initialize currentSmallMatrix with 9
-    movl $9, currentSmallMatrix
+    # initialize index9 with 9
+    movl $9, index9
 
-    # initialize bigMessage with MessageDefaultBig
+    # initialize stringPrintTable with MessageDefaultBig
     mov $MessageDefaultBig, %r12
     mov $0, %r13        # i = 0
     start_loop_3_init_game:
         mov (%r12), %r14                 # r14 = r12
-        movb %r14b, bigMessage(%r13)   # bigMessage[i] = MessageDefaultBig[i]
+        movb %r14b, stringPrintTable(%r13)   # stringPrintTable[i] = MessageDefaultBig[i]
         inc %r12                        # i++
         inc %r13                        # i++
         cmp $765, %r13                   # i < 81

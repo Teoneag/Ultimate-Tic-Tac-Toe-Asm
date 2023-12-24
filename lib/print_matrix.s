@@ -12,14 +12,14 @@ print_matrix:      # By gali ofc
     push %r14
     push %r15
 
-    movl currentSmallMatrix, %edi
+    movl index9, %edi
     push %rdi  # push the matrix to blink on the stack
     push %rdi  # push the matrix to blink on the stack
     cmp $10,%rdi
     je noBlinkingMF
     cmp $9,%rdi
     jne doNormalStuff
-    mov $bigMessage,%r12
+    mov $stringPrintTable,%r12
     mov $0,%r13  # r13 is index
     mov $EffectStartBlinking,%rdi
     loopShit:
@@ -36,7 +36,7 @@ print_matrix:      # By gali ofc
 
     jmp ignoore
     noBlinkingMF:
-    mov $bigMessage,%r12
+    mov $stringPrintTable,%r12
     mov $0,%r13  # r13 is index
     mov $OutputChar,%rdi
     loopShit2:
@@ -71,7 +71,7 @@ print_matrix:      # By gali ofc
     mov %rax,%r15
     inc %r15
     inc %r15
-    mov $bigMessage,%r12
+    mov $stringPrintTable,%r12
     mov $0,%r13  # r13 is index
     push $5
     push $5 # no of times we startblink

@@ -20,7 +20,7 @@ add_to_output_from_small_index:      # By Teon
 
     movb %r12b, %dil
     mov %rax, %rsi
-    mov $bigMessage, %rdx
+    mov $stringPrintTable, %rdx
     call add_to_output_from_big_index 
 
     # pop registers

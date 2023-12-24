@@ -18,7 +18,7 @@ win_screen:      # By Teo
 
     call clear_screen
 
-    movl $10, currentSmallMatrix
+    movl $10, index9
 
     call print_matrix
 

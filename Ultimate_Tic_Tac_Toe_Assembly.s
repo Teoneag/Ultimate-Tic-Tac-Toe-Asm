@@ -16,14 +16,14 @@
 
 
 .data
-matrix81: .skip 81              # 9x9 matrix: - for nothing, O for O, X for X
-currentPlayer: .byte 'X'        # O for O, X for X
-currentSmallMatrix: .int 4      # from 0 to 8, 9 for chose any
-currentInput: .int 0            # from 0 to 8, 9 for chose any
-matrix9: .skip 9                # 3x3 big matrix: - for nothing, O for O, X for X, D for draw
-index81: .int 0                 # from 0 to 80
+currentPlayer: .byte 'X'        # X or O
+matrix9: .skip 9                # the 3 x 3 matrix of the “big” table: - for empty, D for draw, X, O
+index9: .int 4                  # the index of the current square in the matrix9: 0 - 8
+matrix81: .skip 81              # a matrix for the smaller squares: 9 x 9
+index81: .int 0                 # the index of the current square in the matrix81: 0 - 80
+currentInput: .int 0            # the current input: 0 - 8, 9 for chose any
 
-bigMessage: .skip 800           # big matrix
+stringPrintTable: .skip 800     # string for printing the table (table lines + content)
 
 nrWinsX: .int 0
 nrWinsO: .int 0
@@ -84,7 +84,7 @@ main:
         movl index81, %esi
         call add_to_output_from_small_index
         
-        movl currentSmallMatrix, %edi
+        movl index9, %edi
         call check_win
         
         // call display_data

@@ -6,7 +6,7 @@ add_to_output_from_big_index:        # By Gali
     mov %rsp, %rbp
 
     mov $0, %rcx             # rcx is the index of both input and output strings
-    mov $bigMessage, %rax    #rax is the output string
+    mov $stringPrintTable, %rax    #rax is the output string
 
     loop:
         cmpb $0, (%rdx, %rcx, 1)
