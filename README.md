@@ -18,6 +18,8 @@
 <div align = "right">
 
 By [Teodor Neagoe](https://github.com/Teoneag) & [Horia Galitianu](https://github.com/horiagali)
+
+\- In x86_64 AT&T Assembly -
 </div>
 <img src="gifs/table.gif" width="400"/>
 </div>
