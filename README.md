@@ -27,7 +27,7 @@ By [Teodor Neagoe](https://github.com/Teoneag) & [Horia Galitianu](https://githu
 ## 0. Prolog :))
 Remember those days when Tic Tac Toe felt a tad too small? Introducing the solution: Ultimate Tic Tac Toe! Now, instead of just 9 squares, you've got... 9 squares. But wait for it, each of those squares is made up of another 9 squares! That's right, it's not just 9 times the fun, it's 81 times the confusion! Tic Tac Toe, now in Super Mega Ultra HD.
 
-## 1. Using example
+## 1. Usage example
 
 ### a) OS
 The game is targeted for Linux (Ubuntu).
